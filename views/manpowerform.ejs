@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="http://localhost:3000/images/fixer_logo.png">
+    <title>Manpower Requerst Form</title>
+    <!-- import Bootstrap CSS -->
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/stylesheets/form-validation.css" rel="stylesheet">
+    <!-- import jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- import Bootstrap -->
+	<script src="http://localhost:3000/javascripts/bootstrap.min.js"></script>
+	<!-- import jquery validater -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+	<style type="text/css">
+	form.cmxform label.error, label.error{
+		color: red;
+	}
+	</style>
+
+	<script>
+	$(document).ready(function(){
+		$("#manpowerform").validate({
+			rules:{
+				"frontend[]": {required: true},
+				cloud_platform: {required: true},
+				"backend[]": {required: true},
+				"database[]": {required: true}
+			},
+			messages:{
+				"frontend[]": {required: "Please select at least 1 checkbox"},
+				cloud_platform: {required: "Please select a cloud platform"},
+				"backend[]": {required: "Please select at least 1 checkbox"},
+				"database[]": {required: "Please select at least 1 checkbox"}
+			},
+			errorPlacement:function(error,element){
+				if(element.attr("name")=="frontend[]"){
+					error.insertAfter("#frontend_error");
+				}else if(element.attr("name")=="cloud_platform"){
+					error.insertAfter("#cloud_error");
+				}else if(element.attr("name")=="backend[]"){
+					error.insertAfter("#backend_error")
+				}else if(element.attr("name")=="database[]"){
+					error.insertAfter("#database_error");
+				}else if(element.attr("name")=="os_requirements"){
+					error.insertAfter("#os_error")
+				}else{
+					error.insertAfter(element);
+				}
+			}
+		});
+	});
+	</script>
+  </head>
+
+	<body class="bg-light">
+		<div class="container">
+			<div class="py-5 row">
+				<div class="col-md-3">
+					<img src="http://localhost:3000/images/fixer_logo.png" height="82" width="189">
+				</div>
+				<div class="col-md-1"></div>
+				<div class="col-md-6">
+					<h2>MANPOWER REQUEST FORM</h2>
+					<h2>GBA CSG</h2>
+				</div>
+			</div>
+			<div class="col-md-10 order-md-1">
+				<h4 class="mb-3 text-danger">Please note, all red fields are mandatory to fill up</h4>
+				<form class="needs-validation" novalidate method="post" action="/formresponse/post" id="manpowerform">
+
+					<div class="row">
+						<div class="col-md-6 mb-3 is-invalid text-danger">
+							<label for="firstName">Requestor Name   *</label>
+							<input type="text" class="form-control panel-danger" id="firstName" placeholder="" value="" required name="first_name">
+						</div>
+						<div class="col-md-6 mb-3 text-danger">
+							<label for="lastName">Requestor Department   *</label>
+							<input type="text" class="form-control" id="lastName" placeholder="" value="" required name="last_name">
+						</div>
+					</div>
+
+					<div class="mb-3 text-danger">
+						<label for="email">Email   *</label>
+						<input type="email" class="form-control" id="email" placeholder="you@example.com" required name="email">
+					</div>
+
+					<div class="mb-3 text-danger">
+						<label for="fixer_project">Fixer Project Name   *<br><span class="text-muted">Fixerのプロジェクト名</span></label>
+						<input type="text" class="form-control" id="fixer_project" placeholder="" required name="fixer_project">
+					</div>
+					<div class="mb-3 text-danger">
+						<label for="fixer_department">Fixer Department<br><span class="text-muted">Fixerの部署</span></label>
+						<input type="text" class="form-control" id="fixer_department" placeholder="" required name="fixer_department">
+					</div>
+					<div class="mb-3">
+						<label for="client_company">Client Company Name<br><span class="text-muted">クライアント会社の名前</span></label>
+						<input type="text" class="form-control" id="client_company" placeholder="" name="client_company">
+					</div>
+					<div class="mb-3">
+						<label for="client_point">Client point of contact person<br><span class="text-muted">クライアントの担当者</span></label>
+						<input type="text" class="form-control" id="client_point" placeholder="" name="client_point">
+					</div>
+					<div class="mb-3">
+						<label for="client_contact">Client contact details (IM/phone)<br><span class="text-muted">クライアントとのコンタクト方法</span></label>
+						<input type="text" class="form-control" id="client_contact" placeholder="" name="client_contact">
+					</div>
+					<div class="mb-3 text-danger">
+						<label for="project_title">Project Title   *<br><span class="text-muted">プロジェクトタイトル</span></label>
+						<input type="text" class="form-control" id="project_title" placeholder="" required name="project_title">
+					</div>
+					<div class="mb-3 text-danger">
+						<label for="project_description">Project Description   *<br><span class="text-muted">プロジェクトの詳細</span></label>
+						<textarea type="text" class="form-control" id="project_description" rows="4" placeholder="" required name="project_description"></textarea>
+					</div>
+					<div class="mb-3">
+						<label for="project_scope">Project Scope<br><span class="text-muted">プロジェクトの展望</span></label>
+						<textarea type="text" class="form-control" id="project_scope" rows="4" placeholder="" name="project_scope"></textarea>
+					</div>
+					<div class="mb-3 text-danger">
+						<label for="bilingual_resource">Bilingual resource needed?   *<br><span class="text-muted">バイリンガル人材は必要か?</span></label>
+						<select class="custom-select" name="bilingual_resource" required>
+							<option selected value="no">No</option>
+							<option value="yes">Yes</option>
+						</select>
+					</div>
+					<div class="mb-3">
+						<label for="project_kickoff">Project expected kick off<br><span class="text-muted">プロジェクトの開始予定日</span></label>
+						<input type="date" class="form-control" id="project_kickoff" placeholder="2018/01/01" name="project_kickoff">
+					</div>
+					<div class="mb-3">
+						<label for="project_deadline">Project expected deadline<br><span class="text-muted">プロジェクトの終了予定日</span></label>
+						<input type="date" class="form-control" id="project_deadline" placeholder="2018/01/01" name="project_deadline">
+					</div>
+					<div class="mb-3">
+						<label for="flexible_deadline">Flexible deadline<br><span class="text-muted">締め切りは変更可能か</span></label>
+						<select class="custom-select" name="flexible_deadline">
+							<option selected value="no">No</option>
+							<option value="yes">Yes</option>
+						</select>
+					</div>
+					<div class="mb-3">
+						<label for="frontend_technologies" class="text-danger">Frontend technologies   *<br><span class="text-muted">フロントエンド技術</span></label>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="html" name="frontend[]">
+							<label class="form-check-label" for="html">HTML / JavaScript / CSS</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="react" name="frontend[]">
+							<label class="form-check-label" for="react">React</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="angular" name="frontend[]">
+							<label class="form-check-label" for="angular">Angular</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="jquery" name="frontend[]">
+							<label class="form-check-label" for="jquery">JQery</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="bootstrap" name="frontend[]">
+							<label class="form-check-label" for="bootstrap">Bootstrap</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="sass" name="frontend[]">
+							<label class="form-check-label" for="sass">Sass</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="json" name="frontend[]">
+							<label class="form-check-label" for="json">Json</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="ajax" name="frontend[]">
+							<label class="form-check-label" for="ajax">Ajax</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="no_frontend" name="frontend[]">
+							<label class="form-check-label" for="no_frontend">Not applicable</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="other_frontend" name="frontend[]">
+							<label class="form-check-label" for="other_frontend">Other</label>
+						</div>
+						<input type="text" class="form-control" id="frontend_technologies" placeholder="write other technologies" name="frontend_technologies">
+						<div id="frontend_error"></div>
+					</div>
+
+					<div class="mb-3">
+						<label for="cloud_platform" class="text-danger">Cloud platform   *<br><span class="text-muted">クラウドプラットフォーム</span></label>
+						<div class="form-check">
+							<input type="radio" class="form-check-input" id="cloud_platform_azure" name="cloud_platform" value="azure" required>
+							<label class="form-check-label" for="cloud_platform_azure">Azure</label>
+						</div>
+						<div class="form-check">
+							<input type="radio" class="form-check-input" id="cloud_platform_aws" name="cloud_platform" value="aws">
+							<label class="form-check-label" for="cloud_platform_aws">AWS</label>
+						</div>
+						<div class="form-check">
+							<input type="radio" class="form-check-input" id="cloud_platform_google" name="cloud_platform" value="google">
+							<label class="form-check-label" for="cloud_platform_google">Google Cloud Platform</label>
+						</div>
+						<div class="form-check">
+							<input type="radio" class="form-check-input" id="cloud_platform_no_cloud" name="cloud_platform" value="no_cloud">
+							<label class="form-check-label" for="cloud_platform_no_cloud">Not applicable</label>
+						</div>
+						<div class="form-check">
+							<input type="radio" class="form-check-input" id="cloud_platform_other" name="cloud_platform" value="other">
+							<label class="form-check-label" for="cloud_platform_other">Other</label>
+						</div>
+						<input type="text" class="form-control" id="cloud_platform" placeholder="write other platform" name="other_cloud">
+						<div id="cloud_error"></div>
+					</div>
+
+						<!-- <div class="input-group">
+							<div class="input-group-prepend">
+								<div class="input-group-text">
+									<input type="radio" name="cloud_platform" class="form-check-input" value="other" aria-label="">
+								</div>
+							</div>
+							<input type="text" class="form-control" id="cloud_platform" placeholder="other" name="cloud_platform" aria-label="...">
+						</div> -->
+
+					<div class="mb-3">
+						<label for="backend_technologies" class="text-danger">Backend technologies   *<br><span class="text-muted">バックエンド技術</span></label>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="cs" name="backend[]">
+							<label class="form-check-label" for="cs">C#</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="java" name="backend[]">
+							<label class="form-check-label" for="java">Java</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="php" name="backend[]">
+							<label class="form-check-label" for="php">PHP</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="nodejs" name="backend[]">
+							<label class="form-check-label" for="nodejs">Node.js</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="python" name="backend[]">
+							<label class="form-check-label" for="python">Python</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="vbnet" name="backend[]">
+							<label class="form-check-label" for="vbnet">vbnet</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="ruby" name="backend[]">
+							<label class="form-check-label" for="ruby">Ruby</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="no_backend" name="backend[]">
+							<label class="form-check-label" for="no_backend">Not applicable</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="other_backend" name="backend[]">
+							<label class="form-check-label" for="other_backend">Other</label>
+						</div>
+						<input type="text" class="form-control" id="backend_technologies" placeholder="write other technologies" name="backend_technologies">
+						<div id="backend_error"></div>
+					</div>
+
+					<div class="mb-3">
+						<label for="specific_frameworks">If you need specific frameworks please specify here<br><span class="text-muted">もし特定のフレームワークが必要な時はこちらに記述してください。</span></label>
+						<textarea type="text" class="form-control" rows="2" id="specific_frameworks" placeholder="" name="specific_frameworks"></textarea>
+					</div>
+					<div class="mb-3">
+						<label for="database_technologies" class="text-danger">Database technologies   *<br><span class="text-muted">データベース技術</span></label>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="mssqlserver" name="database[]">
+							<label class="form-check-label" for="mssqlserver">MS SQL server</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="mysql" name="database[]">
+							<label class="form-check-label" for="mysql">MySQL</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="postgresql" name="database[]">
+							<label class="form-check-label" for="postgresql">PostgreSql</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="mongodb" name="database[]">
+							<label class="form-check-label" for="mongodb">MongoDB</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="oracle" name="database[]">
+							<label class="form-check-label" for="oracle">Oracle</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="cosmosdb" name="database[]">
+							<label class="form-check-label" for="cosmosdb">CosmosDB</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="no_database" name="database[]">
+							<label class="form-check-label" for="no_database">Not applicable</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="checkbox" value="other_database" name="database[]">
+							<label class="form-check-label" for="other_database">Other</label>
+						</div>
+						<input type="text" class="form-control" id="database_technologies" placeholder="write other technologies" name="database_technologies">
+						<div id="database_error"></div>
+					</div>
+					<div class="mb-3">
+						<label for="os_requirements" class="text-danger">OS requirements - On what OS your program needs to be run?   *<br><span class="text-muted">OSの要求</label>
+						<div class="form-check">
+							<input type="radio" class="form-check-input" id="os_requirements_windows" name="os_requirements" required value="windows">
+							<label class="form-check-label" for="os_requirements">Windows</label>
+						</div>
+						<div class="form-check">
+							<input type="radio" class="form-check-input" id="os_requirements_linux" name="os_requirements" value="linux">
+							<label class="form-check-label" for="os_requirements">Linux</label>
+						</div>
+						<div class="form-check">
+							<input type="radio" class="form-check-input" id="os_requirements_mac" name="os_requirements" value="mac">
+							<label class="form-check-label" for="cloud_platform_google">Mac</label>
+						</div>
+						<div class="form-check">
+							<input type="radio" class="form-check-input" id="os_requirements_no_os" name="os_requirements" value="no_os">
+							<label class="form-check-label" for="cloud_platform_no_os">Not applicable</label>
+						</div>
+						<div class="form-check">
+							<input type="radio" class="form-check-input" id="os_requirements_other" name="os_requirements" value="other">
+							<label class="form-check-label" for="cloud_platform_other">Other</label>
+						</div>
+						<input type="text" class="form-control" id="os_requirements" placeholder="other OS" name="other_os">
+						<div id="os_error"></div>
+					</div>
+					<div class="mb-3">
+						<label for="other_requirements">Other requirements<br><span class="text-muted">他の要求</span></label>
+						<input type="text" class="form-control" id="os_requirements" placeholder="" name="os_requirements">
+					</div>
+					<div class="mb-3 text-danger">
+						<label for="github_account">Github account required   *<br><span class="text-muted">Githubアカウントの要求</span></label>
+						<select class="custom-select" required name="github_account">
+							<option selected value="no">No</option>
+							<option value="yes">Yes</option>
+						</select>
+					</div>
+					<div class="mb-3 text-danger">
+						<label for="slack_account">Slack account required   *<br><span class="text-muted">Slackアカウントの要求</span></label>
+						<select class="custom-select" required name="slack_account">
+							<option selected value="no">No</option>
+							<option value="yes">Yes</option>
+						</select>
+					</div>
+					<div class="mb-3">
+						<label for="management_engineer">Will you include the engineer in any project management tools to communicate with other members?<br><span class="text-muted">他のメンバとコミュニケーションするためのあらゆるプロジェクト管理ツールを扱える技術者を加えたいですか?</span></label>
+						<select class="custom-select" name="management_engineer">
+							<option selected value="no">No</option>
+							<option value="yes">Yes</option>
+						</select>
+					</div>
+					<div class="mb-3">
+						<label for="manegement_tool">If yes to the previous question please provide the project management tool name here<br><span class="text-muted">前の質問にYesと答えた方はプロジェクト管理ツールの名前をここに記述してください。</span></label>
+						<input type="text" class="form-control" id="management_tool" placeholder="" name="management_tool">
+					</div>
+					<div class="mb-3">
+						<label for="review_status">Do you want to have a regular review on the development status?<br><span class="text-muted">開発ステータスの定期的な見直しをしたいですか?</span></label>
+						<select class="custom-select" name="review_status">
+							<option selected value="no">No</option>C:\Users\shiiki.yosuke\AppData\Roaming\npm
+							<option value="yes">Yes</option>
+							<option value="maybe">Maybe</option>
+						</select>
+					</div>
+					<div class="mb-3">
+						<label for="security_compliance">Application security compliance specifics<br><span class="text-muted">アプリケーションセキュリティコンプライアンスの詳細</span></label>
+						<textarea type="text" class="form-control" id="security_compliance"rows="4" placeholder="" name="security_compliance"></textarea>
+					</div>
+					<div class="mb-3">
+						<label for="other_risks">Any other specific risks / assumptions<br><span class="text-muted">他の特定のリスクや想定</span></label>
+						<input type="text" class="form-control" id="other_risks" placeholder="" name="other_risks">
+					</div>
+					<div class="mb-3">
+						<label for="link_documents">Links to external documents to share<br><span class="text-muted">共有する外部ドキュメントとのリンク</span></label>
+						<textarea type="text" class="form-control" id="link_documents" rows="3" placeholder="" name="link_documents"></textarea>
+					</div>
+					<div class="mb-3">
+						<label for="project_incentives">Project incentives may be applied depending on perormance result<br><span class="text-muted">プロジェクトへのやる気はパフォーマンス結果によって影響されうる</span></label>
+						<select class="custom-select" name="project_incentives">
+							<option selected value="no">No</option>
+							<option value="yes">Yes</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label for="comments">Ohter comments</label>
+						<textarea type"text" class="form-control" id="comments" rows="4" name="comments"></textarea>
+					</div>
+
+					<hr class="mb-4">
+					<button class="btn btn-primary btn-lg btn-block" type="submit">Send Form</button>
+				</form>
+			</div>
+		</div>
+		
+		<footer class="my-5 pt-5 text-center text-small text-muted">
+			
+		</footer>
+
+	<script>
+	// 無効なフィールドがある場合にフォーム送信を無効にするスターターJavaScriptの例
+	(function() {
+		'use strict';
+
+		window.addEventListener('load', function() {
+			// カスタムブートストラップ検証スタイルを適用するすべてのフォームを取得
+			var forms = document.getElementsByClassName('needs-validation');
+			// ループして帰順を防ぐ
+			var validation = Array.prototype.filter.call(forms, function(form) {
+				form.addEventListener('submit', function(event) {
+					if (form.checkValidity() === false) {
+						event.preventDefault();
+						event.stopPropagation();
+					}
+					form.classList.add('was-validated');
+				}, false);
+			});
+		}, false);
+	})();
+/*
+	$(document).ready(function(){
+		$("#manpowerform").validate({
+			rules:{
+				'frontend[]':{required: true}
+			},
+			messages :{
+				'frontend[]':{required:"どれか一つを選択してください。"}
+			},
+			errorPlacement :function(error,element){
+				if(element.attr("name")=="frontend[]")error.insertAfter("#error");
+				else(element.attr("name")=="name")
+					error.inserAfter(element);
+			}
+		});
+	});
+	*/
+	</script>
+
+	</body>
+</html>
+
