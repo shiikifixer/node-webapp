@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
+    <link rel="icon" href="http://localhost:3000/images/fixer_logo.png">
+    <title>Form Response</title>
+    <!-- import Bootstrap CSS -->
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/stylesheets/form-validation.css" rel="stylesheet">
+    <!-- import jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- import Bootstrap -->
+    <script src="http://localhost:3000/javascripts/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        $( function() {
+            $('#ajax-button').click(
+            function() {
+                var ans = <%- JSON.stringify(answers) %>;
+                var insertUrl= 'http://localhost:3000/manpowerform/insert';
+                var completeUrl='http://localhost:3000/manpowerform/complete';
+                $.ajax({
+                    url: insertUrl,
+                    type:'POST',
+                    dataType: 'json',
+                    data : ans,
+                    timeout:10000,
+                }).done(function(res) {
+                    /*if(res.message == "Success" ){
+                        //redirect to new route
+                    }*/
+                    location.href=completeUrl;
+
+                }).fail(function(xhr) {
+                    console.log(xhr);
+                })
+            });
+        });
+    </script>
+
+</head>
+
+<body class="bg-light">
+    <div class="container">
+        <div class="py-5">
+            <h4>Registration Screen</h4>
+        </div>
+        <table class="table table-sm">
+            <thead>
+                <tr class="thead-dark">
+                    <th class="w-25" scope="col">Question</th>
+                    <th class="w-75 align-middle" scope="col" colspan="2">Answer</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th class="w-25 table-active">Requester Name</th>
+                    <th class="w-75 align-mimddle" colspan="2"><%= answer1 %></th>
+                </tr>
+                <tr>
+                    <th class="table-secondary">Requester Department</th>
+                    <th class="align-middle" colspan="2"><%= answer2 %></th>
+                </tr>
+                <tr>
+                    <th class="table-active">Email</th>
+                    <th class="align-middle" colspan="2"><%= answer3 %></th>
+                </tr>
+                <tr>
+                    <th class="table-secondary">Fixer Project Name</th>
+                    <th class="align-middle" colspan="2"><%= answer4 %></th>
+                </tr>
+                <tr>
+                    <th class="table-active">Fixer Department</th>
+                    <th class="align-middle" colspan="2"><%= answer5 %></th>
+                </tr>
+                <tr>
+                    <th class="table-secondary">Client Company Name</th>
+                    <th class="align-middle" colspan="2"><%= answer6 %></th>
+                </tr>
+                <tr>
+                    <th class="table-active">Client point of contact person</th>
+                    <th class="align-middle" colspan="2"><%= answer7 %></th>
+                </tr>
+                <tr>
+                    <th class="table-secondary">Client contact details (IM/phone)</th>
+                    <th class="align-middle" colspan="2"><%= answer8 %></th>
+                </tr>
+                <tr>
+                    <th class="table-active">Project Title</th>
+                    <th class="align-middle" colspan="2"><%= answer9 %></th>
+                </tr>
+                <tr>
+                    <th class="table-secondary">Project Description</th>
+                    <th class="align-middle" colspan="2"><%= answer10 %></th>
+                </tr>
+                <tr>
+                    <th class="table-active">Project Scope</th>
+                    <th class="align-middle" colspan="2"><%= answer11 %></th>
+                </tr>
+                <tr>
+                    <th class="table-secondary">Bilingual Resource needed?</th>
+                    <th class="align-middle" colspan="2"><%= answer12 %></th>
+                </tr>
+                <tr>
+                    <th class="table-active">Project expected kick off</th>
+                    <th class="align-middle" colspan="2"><%= answer13 %></th>
+                </tr>
+                <tr>
+                    <th class="table-secondary">Project expected deadline</th>
+                    <th class="align-middle" colspan="2"><%= answer14 %></th>
+                </tr>
+                <tr>
+                    <th class="table-active">Flexible Deadline</th>
+                    <th class="align-middle" colspan="2"><%= answer15 %></th>
+                </tr>
+                <tr>
+                    <th class="w-25 table-secondary" rowspan="10">Frontend Technologies</th>
+                    <th class="w-25">HTML</th>
+                    <th class="align-middle w-50"><%= answer16 %></th>
+                </tr>
+                <tr>
+                    <th>React</th>
+                    <th class="align-middle"><%= answer17 %></th>
+                </tr>
+                <tr>
+                    <th>Angular</th>
+                    <th class="align-middle"><%= answer18 %></th>
+                </tr>
+                <tr>
+                    <th>JQuery</th>
+                    <th class="align-middle"><%= answer19 %></th>
+                </tr>
+                <tr>
+                    <th>Bootstrap</th>
+                    <th class="align-middle"><%= answer20 %></th>
+                </tr>
+                <tr>
+                    <th>Sass</th>
+                    <th class="align-middle"><%= answer21 %></th>
+                </tr>
+                <tr>
+                    <th>JSON</th>
+                    <th class="align-middle"><%= answer22 %></th>
+                </tr>
+                <tr>
+                    <th>Ajax</th>
+                    <th class="align-middle"><%= answer23 %></th>
+                </tr>
+                <tr>
+                    <th>not applicable</th>
+                    <th class="align-middle"><%= answer24 %></th>
+                </tr>
+                <tr>
+                    <th>other</th>
+                    <th class="align-middle"><%= answer25 %></th>
+                </tr>
+                <tr>
+                    <th class="table-active" rowspan="2">Cloud Platform</th>
+                    <th class="align-middle" colspan="2"><%= answer26 %></th>
+                </tr>
+                <tr>
+                    <th class="align-middle" colspan="2">other: <%= answer27 %></th>
+                </tr>
+                <tr>
+                    <th class="table-secondary" rowspan="9">Backend Technologies</th>
+                    <th>C#</th>
+                    <th class="align-middle"><%= answer28 %></th>
+                </tr>
+                <tr>
+                    <th>Java</th>
+                    <th class="align-middle"><%= answer29 %></th>
+                </tr>
+                <tr>
+                    <th>PHP</th>
+                    <th class="align-middle"><%= answer30 %></th>
+                </tr>
+                <tr>
+                    <th>Node.js</th>
+                    <th class="align-middle"><%= answer31 %></th>
+                </tr>
+                <tr>
+                    <th>Python</th>
+                    <th class="align-middle"><%= answer32 %></th>
+                </tr>
+                <tr>
+                    <th>vbnet</th>
+                    <th class="align-middle"><%= answer33 %></th>
+                </tr>
+                <tr>
+                    <th>Ruby</th>
+                    <th class="align-middle"><%= answer34 %></th>
+                </tr>
+                <tr>
+                    <th>not applicable</th>
+                    <th class="align-middle"><%= answer35 %></th>
+                </tr>
+                <tr>
+                    <th>other</th>
+                    <th class="align-middle"><%= answer36 %></th>
+                </tr>
+                <tr>
+                    <th class="table-active">If you need specific frameworks please specify here</th>
+                    <th class="align-middle" colspan="2"><%= answer37 %></th>
+                </tr>
+                <tr>
+                    <th class="table-secondary" rowspan="8">Database Technologies</th>
+                    <th>MS SQL server</th>
+                    <th class="align-middle"><%= answer38 %></th>
+                </tr>
+                <tr>
+                    <th>MySQL</th>
+                    <th class="align-middle"><%= answer39 %></th>
+                </tr>
+                <tr>
+                    <th>PostgreSQL</th>
+                    <th class="align-middle"><%= answer40 %></th>
+                </tr>
+                <tr>
+                    <th>MongoDB</th>
+                    <th class="align-middle"><%= answer41 %></th>
+                </tr>
+                <tr>
+                    <th>Oracle</th>
+                    <th class="align-middle"><%= answer42 %></th>
+                </tr>
+                <tr>
+                    <th>CosmosDB</th>
+                    <th class="align-middle"><%= answer43 %></th>
+                </tr>
+                <tr>
+                    <th>not applicable</th>
+                    <th class="align-middle"><%= answer44 %></th>
+                </tr>
+                <tr>
+                    <th>other</th>
+                    <th class="align-middle"><%= answer45 %></th>
+                </tr>
+                <tr>
+                    <th class="table-active"rowspan="2">OS requirements</th>
+                    <th class="align-middle" colspan="2"><%= answer46 %></th>
+                </tr>
+                <tr>
+                    <th class="align-middle" colspan="2">other: <%= answer47 %></th>
+                </tr>
+                <tr>
+                    <th class="table-secondary">other requirements</th>
+                    <th class="align-middle" colspan="2"><%= answer48 %></th>
+                </tr>
+                <tr>
+                    <th class="table-active">Github account required</th>
+                    <th class="align-middle" colspan="2"><%= answer49 %></th>
+                </tr>
+                <tr>
+                    <th class="table-secondary">Slack account required</th>
+                    <th class="align-middle" colspan="2"><%= answer50 %></th>
+                </tr>
+                <tr>
+                    <th class="table-secondary">Will you include the engineer in any project management tools to communicate with other members?</th>
+                    <th class="align-middle" colspan="2"><%= answer51 %></th>
+                </tr>
+                <tr>
+                    <th class="table-secondary">If yes to the previous question please provide the project management tool name here</th>
+                    <th class="align-middle" colspan="2"><%= answer52 %></th>
+                </tr>
+                <tr>
+                    <th class="table-active">Do you want to have a regular review on the development status?</th>
+                    <th class="align-middle" colspan="2"><%= answer53 %></th>
+                </tr>
+                <tr>
+                    <th class="table-secondary">Application security compliance specifics</th>
+                    <th class="align-middle" colspan="2"><%= answer54 %></th>
+                </tr>
+                <tr>
+                    <th class="table-active">Any other specific risks / assumptions</th>
+                    <th class="align-middle" colspan="2"><%= answer55 %></th>
+                </tr>
+                <tr>
+                    <th class="table-secondary">Links to external documents to share</th>
+                    <th class="align-middle" colspan="2"><%= answer56 %></th>
+                </tr>
+                <tr>
+                    <th class="table-active">Project incentives may be applied depending on performance result</th>
+                    <th class="align-middle" colspan="2"><%= answer57 %></th>
+                </tr>
+                <tr>
+                    <th class="table-secondary">other comments</th>
+                    <th class="align-middle" colspan="2"><%= answer58 %></th>
+                </tr>
+            </tbody>
+        </table>
+
+        <input type="button" onclick="window.history.back();" value="Go Back" class="btn">
+        <input type="button" value="Confirm" class="btn" id="ajax-button">
+    </div>
+</body>
+</html>

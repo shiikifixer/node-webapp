@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
+    <link rel="icon" href="http://localhost:3000/images/fixer_logo.png">
+    <title>Registration List</title>
+    <!-- import Bootstrap CSS -->
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/stylesheets/form-validation.css" rel="stylesheet">
+    <!-- import jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- import Bootstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<body class="bg-light">
+    <div class="container">
+        <div class="py-5">
+            <h1><%= title %></h1>
+        </div>
+  
+        <div role="main">
+            <table class="table table-sm table-hover">
+                <thead>
+                    <tr class="thead-dark">
+                        <th scope="col">No</th>
+                        <th scope="col">Requester Name</th>
+                        <th scope="col">Requester Department</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Client Company Name</th>
+                        <th scope="col">Project Title</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i in content) { %>
+                    <% var obj = content[i].attributes; %>
+                    <tr onclick="window.location.assign('http://localhost:3000/admin/detail' + '?id=<%=obj.id%>');">
+                        <th><%= obj.id %></th>
+                        <td><%= obj.first_name %></td>
+                        <td><%= obj.last_name %></td>
+                        <td><%= obj.email %></td>
+                        <td><%= obj.client_company %></td>
+                        <td><%= obj.project_title %></td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+<!-- 行のリンクを作成したい -->
+<script>
+    $("#table td").bind('click', function(){
+        $tag_td = $(this)[0];
+        $tag_tr = $(this).parent()[0];
+        console.log("%s row, %s colomn", $tag_td.cellInex, $tag_tr.rowIndex);
+    });
+</script>
+</body>

@@ -71,7 +71,7 @@
 			</div>
 			<div class="col-md-10 order-md-1">
 				<h4 class="mb-3 text-danger">Please note, all red fields are mandatory to fill up</h4>
-				<form class="needs-validation" novalidate method="post" action="/formresponse/post" id="manpowerform">
+				<form class="needs-validation" novalidate method="post" action="/manpowerform/confirm" id="manpowerform">
 
 					<div class="row">
 						<div class="col-md-6 mb-3 is-invalid text-danger">
@@ -94,7 +94,7 @@
 						<input type="text" class="form-control" id="fixer_project" placeholder="" required name="fixer_project">
 					</div>
 					<div class="mb-3 text-danger">
-						<label for="fixer_department">Fixer Department<br><span class="text-muted">Fixerの部署</span></label>
+						<label for="fixer_department">Fixer Department   *<br><span class="text-muted">Fixerの部署</span></label>
 						<input type="text" class="form-control" id="fixer_department" placeholder="" required name="fixer_department">
 					</div>
 					<div class="mb-3">
@@ -122,7 +122,7 @@
 						<textarea type="text" class="form-control" id="project_scope" rows="4" placeholder="" name="project_scope"></textarea>
 					</div>
 					<div class="mb-3 text-danger">
-						<label for="bilingual_resource">Bilingual resource needed?   *<br><span class="text-muted">バイリンガル人材は必要か?</span></label>
+						<label for="bilingual_resource">Bilingual Resource needed?   *<br><span class="text-muted">バイリンガル人材は必要か?</span></label>
 						<select class="custom-select" name="bilingual_resource" required>
 							<option selected value="no">No</option>
 							<option value="yes">Yes</option>
@@ -137,52 +137,52 @@
 						<input type="date" class="form-control" id="project_deadline" placeholder="2018/01/01" name="project_deadline">
 					</div>
 					<div class="mb-3">
-						<label for="flexible_deadline">Flexible deadline<br><span class="text-muted">締め切りは変更可能か</span></label>
+						<label for="flexible_deadline">Flexible Deadline<br><span class="text-muted">締め切りは変更可能か</span></label>
 						<select class="custom-select" name="flexible_deadline">
 							<option selected value="no">No</option>
 							<option value="yes">Yes</option>
 						</select>
 					</div>
 					<div class="mb-3">
-						<label for="frontend_technologies" class="text-danger">Frontend technologies   *<br><span class="text-muted">フロントエンド技術</span></label>
+						<label for="frontend_technologies" class="text-danger">Frontend Technologies   *<br><span class="text-muted">フロントエンド技術</span></label>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="html" name="frontend[]">
+							<input class="form-check-input" type="checkbox" value="SELECT" name="html">
 							<label class="form-check-label" for="html">HTML / JavaScript / CSS</label>
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="react" name="frontend[]">
+							<input class="form-check-input" type="checkbox" value="SELECT" name="react">
 							<label class="form-check-label" for="react">React</label>
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="angular" name="frontend[]">
+							<input class="form-check-input" type="checkbox" value="SELECT" name="angular">
 							<label class="form-check-label" for="angular">Angular</label>
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="jquery" name="frontend[]">
+							<input class="form-check-input" type="checkbox" value="SELECT" name="jquery">
 							<label class="form-check-label" for="jquery">JQery</label>
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="bootstrap" name="frontend[]">
+							<input class="form-check-input" type="checkbox" value="SELECT" name="bootstrap">
 							<label class="form-check-label" for="bootstrap">Bootstrap</label>
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="sass" name="frontend[]">
+							<input class="form-check-input" type="checkbox" value="SELECT" name="sass">
 							<label class="form-check-label" for="sass">Sass</label>
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="json" name="frontend[]">
+							<input class="form-check-input" type="checkbox" value="SELECT" name="json">
 							<label class="form-check-label" for="json">Json</label>
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="ajax" name="frontend[]">
+							<input class="form-check-input" type="checkbox" value="SELECT" name="ajax">
 							<label class="form-check-label" for="ajax">Ajax</label>
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="no_frontend" name="frontend[]">
-							<label class="form-check-label" for="no_frontend">Not applicable</label>
+							<input class="form-check-input" type="checkbox" value="SELECT" name="nofrontend">
+							<label class="form-check-label" for="nofrontend">Not Applicable</label>
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="other_frontend" name="frontend[]">
+							<input class="form-check-input" type="checkbox" value="SELECT" name="other_frontend">
 							<label class="form-check-label" for="other_frontend">Other</label>
 						</div>
 						<input type="text" class="form-control" id="frontend_technologies" placeholder="write other technologies" name="frontend_technologies">
@@ -190,17 +190,17 @@
 					</div>
 
 					<div class="mb-3">
-						<label for="cloud_platform" class="text-danger">Cloud platform   *<br><span class="text-muted">クラウドプラットフォーム</span></label>
+						<label for="cloud_platform" class="text-danger">Cloud Platform   *<br><span class="text-muted">クラウドプラットフォーム</span></label>
 						<div class="form-check">
-							<input type="radio" class="form-check-input" id="cloud_platform_azure" name="cloud_platform" value="azure" required>
+							<input type="radio" class="form-check-input" id="cloud_platform_azure" name="cloud_platform" value="Azure" required>
 							<label class="form-check-label" for="cloud_platform_azure">Azure</label>
 						</div>
 						<div class="form-check">
-							<input type="radio" class="form-check-input" id="cloud_platform_aws" name="cloud_platform" value="aws">
+							<input type="radio" class="form-check-input" id="cloud_platform_aws" name="cloud_platform" value="AWS">
 							<label class="form-check-label" for="cloud_platform_aws">AWS</label>
 						</div>
 						<div class="form-check">
-							<input type="radio" class="form-check-input" id="cloud_platform_google" name="cloud_platform" value="google">
+							<input type="radio" class="form-check-input" id="cloud_platform_google" name="cloud_platform" value="Google Cloud Platform">
 							<label class="form-check-label" for="cloud_platform_google">Google Cloud Platform</label>
 						</div>
 						<div class="form-check">
@@ -209,7 +209,7 @@
 						</div>
 						<div class="form-check">
 							<input type="radio" class="form-check-input" id="cloud_platform_other" name="cloud_platform" value="other">
-							<label class="form-check-label" for="cloud_platform_other">Other</label>
+							<label class="form-check-label" for="cloud_platform_other">other</label>
 						</div>
 						<input type="text" class="form-control" id="cloud_platform" placeholder="write other platform" name="other_cloud">
 						<div id="cloud_error"></div>
@@ -227,39 +227,39 @@
 					<div class="mb-3">
 						<label for="backend_technologies" class="text-danger">Backend technologies   *<br><span class="text-muted">バックエンド技術</span></label>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="cs" name="backend[]">
+							<input class="form-check-input" type="checkbox" value="SELECT" name="cs">
 							<label class="form-check-label" for="cs">C#</label>
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="java" name="backend[]">
+							<input class="form-check-input" type="checkbox" value="SELECT" name="java">
 							<label class="form-check-label" for="java">Java</label>
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="php" name="backend[]">
+							<input class="form-check-input" type="checkbox" value="SELECT" name="php">
 							<label class="form-check-label" for="php">PHP</label>
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="nodejs" name="backend[]">
+							<input class="form-check-input" type="checkbox" value="SELECT" name="nodejs">
 							<label class="form-check-label" for="nodejs">Node.js</label>
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="python" name="backend[]">
+							<input class="form-check-input" type="checkbox" value="SELECT" name="python">
 							<label class="form-check-label" for="python">Python</label>
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="vbnet" name="backend[]">
+							<input class="form-check-input" type="checkbox" value="SELECT" name="vbnet">
 							<label class="form-check-label" for="vbnet">vbnet</label>
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="ruby" name="backend[]">
+							<input class="form-check-input" type="checkbox" value="SELECT" name="ruby">
 							<label class="form-check-label" for="ruby">Ruby</label>
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="no_backend" name="backend[]">
-							<label class="form-check-label" for="no_backend">Not applicable</label>
+							<input class="form-check-input" type="checkbox" value="SELECT" name="nobackend">
+							<label class="form-check-label" for="nobackend">Not applicable</label>
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="other_backend" name="backend[]">
+							<input class="form-check-input" type="checkbox" value="SELECT" name="other_backend">
 							<label class="form-check-label" for="other_backend">Other</label>
 						</div>
 						<input type="text" class="form-control" id="backend_technologies" placeholder="write other technologies" name="backend_technologies">
@@ -273,35 +273,35 @@
 					<div class="mb-3">
 						<label for="database_technologies" class="text-danger">Database technologies   *<br><span class="text-muted">データベース技術</span></label>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="mssqlserver" name="database[]">
+							<input class="form-check-input" type="checkbox" value="SELECT" name="mssqlserver">
 							<label class="form-check-label" for="mssqlserver">MS SQL server</label>
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="mysql" name="database[]">
+							<input class="form-check-input" type="checkbox" value="SELECT" name="mysql">
 							<label class="form-check-label" for="mysql">MySQL</label>
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="postgresql" name="database[]">
-							<label class="form-check-label" for="postgresql">PostgreSql</label>
+							<input class="form-check-input" type="checkbox" value="SELECT" name="postgresql">
+							<label class="form-check-label" for="postgresql">PostgreSQL</label>
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="mongodb" name="database[]">
+							<input class="form-check-input" type="checkbox" value="SELECT" name="mongodb">
 							<label class="form-check-label" for="mongodb">MongoDB</label>
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="oracle" name="database[]">
+							<input class="form-check-input" type="checkbox" value="SELECT" name="oracle">
 							<label class="form-check-label" for="oracle">Oracle</label>
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="cosmosdb" name="database[]">
+							<input class="form-check-input" type="checkbox" value="SELECT" name="cosmosdb">
 							<label class="form-check-label" for="cosmosdb">CosmosDB</label>
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="no_database" name="database[]">
-							<label class="form-check-label" for="no_database">Not applicable</label>
+							<input class="form-check-input" type="checkbox" value="SELECT" name="nodatabase">
+							<label class="form-check-label" for="nodatabase">Not applicable</label>
 						</div>
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value="other_database" name="database[]">
+							<input class="form-check-input" type="checkbox" value="SELECT" name="other_database">
 							<label class="form-check-label" for="other_database">Other</label>
 						</div>
 						<input type="text" class="form-control" id="database_technologies" placeholder="write other technologies" name="database_technologies">
@@ -333,8 +333,8 @@
 						<div id="os_error"></div>
 					</div>
 					<div class="mb-3">
-						<label for="other_requirements">Other requirements<br><span class="text-muted">他の要求</span></label>
-						<input type="text" class="form-control" id="os_requirements" placeholder="" name="os_requirements">
+						<label for="other_requirements">other Requirements<br><span class="text-muted">他の要求</span></label>
+						<input type="text" class="form-control" id="other_requirements" placeholder="" name="other_requirements">
 					</div>
 					<div class="mb-3 text-danger">
 						<label for="github_account">Github account required   *<br><span class="text-muted">Githubアカウントの要求</span></label>
@@ -364,7 +364,7 @@
 					<div class="mb-3">
 						<label for="review_status">Do you want to have a regular review on the development status?<br><span class="text-muted">開発ステータスの定期的な見直しをしたいですか?</span></label>
 						<select class="custom-select" name="review_status">
-							<option selected value="no">No</option>C:\Users\shiiki.yosuke\AppData\Roaming\npm
+							<option selected value="no">No</option>
 							<option value="yes">Yes</option>
 							<option value="maybe">Maybe</option>
 						</select>
@@ -382,14 +382,14 @@
 						<textarea type="text" class="form-control" id="link_documents" rows="3" placeholder="" name="link_documents"></textarea>
 					</div>
 					<div class="mb-3">
-						<label for="project_incentives">Project incentives may be applied depending on perormance result<br><span class="text-muted">プロジェクトへのやる気はパフォーマンス結果によって影響されうる</span></label>
+						<label for="project_incentives">Project incentives may be applied depending on performance result<br><span class="text-muted">プロジェクトへのやる気はパフォーマンス結果によって影響されうる</span></label>
 						<select class="custom-select" name="project_incentives">
 							<option selected value="no">No</option>
 							<option value="yes">Yes</option>
 						</select>
 					</div>
 					<div class="form-group">
-						<label for="comments">Ohter comments</label>
+						<label for="comments">other comments</label>
 						<textarea type"text" class="form-control" id="comments" rows="4" name="comments"></textarea>
 					</div>
 
