@@ -20,8 +20,8 @@
             $('#ajax-button').click(
             function() {
                 var ans = <%- JSON.stringify(answers) %>;
-                var insertUrl= '../insert';
-                var completeUrl='../complete';
+                var insertUrl= '../manpowerform/insert';
+                var completeUrl='../manpowerform/complete';
                 $.ajax({
                     url: insertUrl,
                     type:'POST',
