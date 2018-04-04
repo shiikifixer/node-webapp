@@ -36,7 +36,7 @@
                 <tbody>
                     <% for(var i in content) { %>
                     <% var obj = content[i].attributes; %>
-                    <tr onclick="window.location.assign('http://localhost:3000/admin/detail' + '?id=<%=obj.id%>');">
+                    <tr onclick="window.location.assign('../admin/detail' + '?id=<%=obj.id%>');">
                         <th><%= obj.id %></th>
                         <td><%= obj.first_name %></td>
                         <td><%= obj.last_name %></td>
