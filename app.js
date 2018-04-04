@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var manpowerform = require('./routes/manpowerform');
-var formresponse = require('./routes/formresponse');
+var milestoneform = require('./routes/milestoneform');
 var admin = require('./routes/admin');
 
 var app = express();
@@ -29,7 +29,7 @@ app.use(express.static("public"));
 app.use('/', index);
 app.use('/users', users);
 app.use('/manpowerform', manpowerform);
-app.use('/formresponse', formresponse);
+app.use('/milestoneform', milestoneform);
 app.use('/admin', admin)
 
 // catch 404 and forward to error handler

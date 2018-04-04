@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/images/fixer_logo.png">
+    <title>Milestone Form</title>
+    <!-- import Bootstrap CSS -->
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/stylesheets/form-validation.css" rel="stylesheet">
+    <!-- import jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- import Bootstrap -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<!-- import jquery validater -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+  </head>
+  <body class="bg-light">
+    <div class="container">
+      <div class="py-5">
+        <h2 class="text-center">Milestone Form</h2>
+      </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">SI.No</th>
+            <th scope="col">Project Milestones</th>
+            <th scope="col">Estimated Hours</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(var i=0; i<10; i++) { %>
+            <tr>
+              <th scope="col"><%= i %></th>
+              <th scope="col">
+                <input type="text" class="form-control" id="milestone" placeholder="" name=<%= "milestone[i]" %>>
+              </th>
+              <th scope="col">
+                <input type="text" class="form-control" id="eshours" placeholder="" name="eshours[i]">
+              </th>
+            </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
