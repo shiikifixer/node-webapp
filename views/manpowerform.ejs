@@ -90,19 +90,19 @@
 					</div>
 
 					<div class="mb-3 text-danger">
-						<label for="fixer_project">Fixer Project Name   *<br><span class="text-muted">Fixerのプロジェクト名</span></label>
-						<input type="text" class="form-control" id="fixer_project" placeholder="" required name="fixer_project">
+						<label for="fixer_project">Fixer Project Name<br><span class="text-muted">Fixerのプロジェクト名</span></label>
+						<input type="text" class="form-control" id="fixer_project" placeholder="" name="fixer_project">
 					</div>
 					<div class="mb-3 text-danger">
-						<label for="fixer_department">Fixer Department   *<br><span class="text-muted">Fixerの部署</span></label>
-						<input type="text" class="form-control" id="fixer_department" placeholder="" required name="fixer_department">
+						<label for="fixer_department">Fixer Department<br><span class="text-muted">Fixerの部署</span></label>
+						<input type="text" class="form-control" id="fixer_department" placeholder="" name="fixer_department">
 					</div>
 					<div class="mb-3">
 						<label for="client_company">Client Company Name<br><span class="text-muted">クライアント会社の名前</span></label>
 						<input type="text" class="form-control" id="client_company" placeholder="" name="client_company">
 					</div>
 					<div class="mb-3">
-						<label for="client_point">Client point of contact person<br><span class="text-muted">クライアントの担当者</span></label>
+						<label for="client_point">Client point of contact person name<br><span class="text-muted">クライアントの担当者</span></label>
 						<input type="text" class="form-control" id="client_point" placeholder="" name="client_point">
 					</div>
 					<div class="mb-3">
@@ -118,8 +118,8 @@
 						<textarea type="text" class="form-control" id="project_description" rows="4" placeholder="" required name="project_description"></textarea>
 					</div>
 					<div class="mb-3">
-						<label for="project_scope">Project Scope<br><span class="text-muted">プロジェクトの展望</span></label>
-						<textarea type="text" class="form-control" id="project_scope" rows="4" placeholder="" name="project_scope"></textarea>
+						<label for="project_scope">Project Scope   *<br><span class="text-muted">プロジェクトの展望</span></label>
+						<textarea type="text" class="form-control" id="project_scope" rows="4" placeholder="" required name="project_scope"></textarea>
 					</div>
 					<div class="mb-3 text-danger">
 						<label for="bilingual_resource">Bilingual Resource needed?   *<br><span class="text-muted">バイリンガル人材は必要か?</span></label>
@@ -337,11 +337,8 @@
 						<input type="text" class="form-control" id="other_requirements" placeholder="" name="other_requirements">
 					</div>
 					<div class="mb-3 text-danger">
-						<label for="github_account">Github account required   *<br><span class="text-muted">Githubアカウントの要求</span></label>
-						<select class="custom-select" required name="github_account">
-							<option selected value="no">No</option>
-							<option value="yes">Yes</option>
-						</select>
+						<label for="github_account">Github account Name   *<br><span class="text-muted">Githubアカウントの要求</span></label>
+						<input type="text" class="form-control" id="other_requirements" placeholder="" required name="github_account">
 					</div>
 					<div class="mb-3 text-danger">
 						<label for="slack_account">Slack account required   *<br><span class="text-muted">Slackアカウントの要求</span></label>
