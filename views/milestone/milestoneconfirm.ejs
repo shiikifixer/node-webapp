@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
+    <link rel="icon" href="/images/fixer_logo.png">
+    <title>Confirmation Screen</title>
+    <!-- import Bootstrap CSS -->
+    <link href="/stylesheets/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/stylesheets/form-validation.css" rel="stylesheet">
+    <!-- import jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- import Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $( function() {
+            $('#ajax-button').click(
+            function() {
+                var ans = <%- JSON.stringify(answers) %>;
+                var insertUrl= '../milestoneform/insert';
+                var completeUrl='../milestoneform/complete';
+                $.ajax({
+                    url: insertUrl,
+                    type:'POST',
+                    dataType: 'json',
+                    data : ans,
+                    timeout:10000,
+                }).done(function(res) {
+                    /*if(res.message == "Success" ){
+                        //redirect to new route
+                    }*/
+                    location.href=completeUrl;
+
+                }).fail(function(xhr) {
+                    console.log(xhr);
+                })
+            });
+        });
+    </script>
+
+</head>
+
+<body class="bg-light">
+    <div class="container">
+        <div class="py-5">
+            <h2>Confirmation Screen</h2>
+        </div>
+        <div class="py-3 col-md-3">
+            <input type="button" onclick="window.history.back();" value="Back" class="btn btn-block">
+        </div>
+        
+        <table class="table table-sm">
+            <thead>
+                <tr class="thead-dark">
+                    <th class="w-auto text-center" scope="col">SI.No</th>
+                    <th class="w-75 align-middle text-center" scope="col">Project Milestone</th>
+                    <th class="w-25 text-center" scope="col">Estimated Hours</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% var sum = 0; %>
+                <% for(var i=0; i<10; i++) { %>
+                <tr>
+                    <% if(answers.eshours[i] == ""){ %>
+
+                    <% } else { %>
+                        <th class="table-active align-middle text-center"><%= i %></th>
+                        <th class="align-middle text-center"><%= answers.milestone[i] %></th>
+                        <th class="align-middle text-center"><%= answers.eshours[i] %></th>
+                    <% } %>
+                </tr>
+                <% sum = sum + Number(answers.eshours[i]); %>
+                <% } %>
+                <tr class="table-info">
+                    <th></th>
+                    <th class="text-center">estimated total time</th>
+                    <th class="align-middle text-center"><%= sum %></th>
+                </tr>
+            </tbody>
+        </table>
+        <div class="py-3 row">
+            <div class="col-md-3">
+                <input type="button" onclick="window.history.back();" value="Back" class="btn btn-block">
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-3">
+                <input type="button" value="Confirm" class="btn btn-primary btn-block" id="ajax-button">
+            </div>
+        </div>
+    </div>
+    <footer class="my-5 pt-5 text-center text-small text-muted">
+			
+    </footer>
+</body>
+</html>

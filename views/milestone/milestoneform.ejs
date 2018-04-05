@@ -22,28 +22,67 @@
       <div class="py-5">
         <h2 class="text-center">Milestone Form</h2>
       </div>
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">SI.No</th>
-            <th scope="col">Project Milestones</th>
-            <th scope="col">Estimated Hours</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% for(var i=0; i<10; i++) { %>
-            <tr>
-              <th scope="col"><%= i %></th>
-              <th scope="col">
-                <input type="text" class="form-control" id="milestone" placeholder="" name=<%= "milestone[i]" %>>
-              </th>
-              <th scope="col">
-                <input type="text" class="form-control" id="eshours" placeholder="" name="eshours[i]">
-              </th>
+      <form method="post" action="/milestoneform/confirm">
+        <input type="text" class="form-control" id="milestone" placeholder="" name="testName">
+        <table class="table table-sm">
+          <thead>
+            <tr class="thead-dark">
+              <th class="text-center w-auto" scope="col">SI.No</th>
+              <th class="text-center w-75" scope="col">Project Milestones</th>
+              <th class="text-center w-auto" scope="col">Estimated Hours</th>
             </tr>
-          <% } %>
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            <% var hantei; %>
+            <% for(var i=0; i<10; i++) { %>
+              <tr>
+                <th class="w-auto text-center" scope="col"><%= i+1 %></th>
+                <th class="w-75" scope="col">
+                  <input type="text" class="form-control" id="<%= i %>" placeholder="" name="milestone<% [i] %>" onchange='reqChange(<%= i %>)'>
+                </th>
+                <script> hantei = $('input[name="milestone[i]"]').val();</script>
+                  <th class="w-auto" scope="col">
+                    <input type="number" list="data1" min="0" class="form-control" id="<%= i+100 %>" placeholder="" required name="eshours<% [i] %>">
+                    <datalist id="data1">
+                      <option value="1"></option>
+                      <option value="2"></option>
+                      <option value="3"></option>
+                      <option value="4"></option>
+                      <option value="5"></option>
+                      <option value="6"></option>
+                      <option value="7"></option>
+                      <option value="8"></option>
+                      <option value="9"></option>
+                    </datalist>
+                  </th>
+              </tr>
+            <% } %>
+          </tbody>
+        </table>
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Send Form</button>
+      </form>
     </div>
   </body>
 </html>
+<script>
+  function reqChange(i){
+    var eval;
+    var n=i+100;
+    // evalq = $('input[ name="testName" ]').val();
+    // evald = $('#'+i).val();
+    // evaln = $('#'+n).val();
+    // alert("reqChange start" + i + " evalq=" + evalq + " evald=" + evald + evaln);
+    for(k=0; k<10; k++){
+      eshoursId=k+100;
+      eval = $('#'+k).val();
+      if(eval == ""){
+        $('#'+eshoursId).attr('required',false);
+        // $('#'+eshoursId).attr('placeholder',"null");
+      }else{
+        $('#'+eshoursId).attr('required',true);
+        // $('#'+eshoursId).attr('placeholder',eval);
+      }
+    }
+  }
+</script>
+
