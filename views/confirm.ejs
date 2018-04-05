@@ -48,6 +48,10 @@
         <div class="py-5">
             <h4>Registration Screen</h4>
         </div>
+        <div class="py-3 col-md-3">
+            <input type="button" onclick="window.history.back();" value="Back" class="btn btn-block">
+        </div>
+        
         <table class="table table-sm">
             <thead>
                 <tr class="thead-dark">
@@ -57,59 +61,59 @@
             </thead>
             <tbody>
                 <tr>
-                    <th class="w-25 table-active">Requester Name</th>
+                    <th class="w-25 table-active">Requester Name<br><span class="text-muted">依頼者</span></th>
                     <th class="w-75 align-mimddle" colspan="2"><%= answer1 %></th>
                 </tr>
                 <tr>
-                    <th class="table-secondary">Requester Department</th>
+                    <th class="table-secondary">Requester Department<br><span class="text-muted">依頼者の部署</span></th>
                     <th class="align-middle" colspan="2"><%= answer2 %></th>
                 </tr>
                 <tr>
-                    <th class="table-active">Email</th>
+                    <th class="table-active">Email<br><span class="text-muted">電子メール</span></th>
                     <th class="align-middle" colspan="2"><%= answer3 %></th>
                 </tr>
                 <tr>
-                    <th class="table-secondary">Client Company Name</th>
+                    <th class="table-secondary">Client Company Name<br><span class="text-muted">クライアントの会社</span></th>
                     <th class="align-middle" colspan="2"><%= answer6 %></th>
                 </tr>
                 <tr>
-                    <th class="table-active">Client point of contact person name</th>
+                    <th class="table-active">Client point of contact person name<br><span class="text-muted">クライアントの担当者</span></th>
                     <th class="align-middle" colspan="2"><%= answer7 %></th>
                 </tr>
                 <tr>
-                    <th class="table-secondary">Client contact details (IM/phone)</th>
+                    <th class="table-secondary">Client contact details (IM/phone)<br><span class="text-muted">クライアントとの連絡手段</span></th>
                     <th class="align-middle" colspan="2"><%= answer8 %></th>
                 </tr>
                 <tr>
-                    <th class="table-active">Project Title</th>
+                    <th class="table-active">Project Title<br><span class="text-muted">プロジェクトタイトル</span></th>
                     <th class="align-middle" colspan="2"><%= answer9 %></th>
                 </tr>
                 <tr>
-                    <th class="table-secondary">Project Description</th>
+                    <th class="table-secondary">Project Description<br><span class="text-muted">プロジェクトの詳細</span></th>
                     <th class="align-middle" colspan="2"><%= answer10 %></th>
                 </tr>
                 <tr>
-                    <th class="table-active">Project Scope</th>
+                    <th class="table-active">Project Scope<br><span class="text-muted">プロジェクトの展望</span></th>
                     <th class="align-middle" colspan="2"><%= answer11 %></th>
                 </tr>
                 <tr>
-                    <th class="table-secondary">Bilingual Resource needed?</th>
+                    <th class="table-secondary">Bilingual Resource needed?<br><span class="text-muted">バイリンガル人材は必要か？</span></th>
                     <th class="align-middle" colspan="2"><%= answer12 %></th>
                 </tr>
                 <tr>
-                    <th class="table-active">Project expected kick off</th>
+                    <th class="table-active">Project expected kick off<br><span class="text-muted">プロジェクトの開始予定日</span></th>
                     <th class="align-middle" colspan="2"><%= answer13 %></th>
                 </tr>
                 <tr>
-                    <th class="table-secondary">Project expected deadline</th>
+                    <th class="table-secondary">Project expected deadline<br><span class="text-muted">プロジェクトの終了予定日</span></th>
                     <th class="align-middle" colspan="2"><%= answer14 %></th>
                 </tr>
                 <tr>
-                    <th class="table-active">Flexible Deadline</th>
+                    <th class="table-active">Flexible Deadline<br><span class="text-muted">締め切りは変更可能か</span></th>
                     <th class="align-middle" colspan="2"><%= answer15 %></th>
                 </tr>
                 <tr>
-                    <th class="w-25 table-secondary" rowspan="10">Frontend Technologies</th>
+                    <th class="w-25 table-secondary" rowspan="10">Frontend Technologies<br><span class="text-muted">フロントエンド技術</span></th>
                     <th class="w-25">HTML</th>
                     <th class="align-middle w-50"><%= answer16 %></th>
                 </tr>
@@ -150,14 +154,14 @@
                     <th class="align-middle"><%= answer25 %></th>
                 </tr>
                 <tr>
-                    <th class="table-active" rowspan="2">Cloud Platform</th>
+                    <th class="table-active" rowspan="2">Cloud Platform<br><span class="text-muted">クラウドプラットフォーム</span></th>
                     <th class="align-middle" colspan="2"><%= answer26 %></th>
                 </tr>
                 <tr>
                     <th class="align-middle" colspan="2">other: <%= answer27 %></th>
                 </tr>
                 <tr>
-                    <th class="table-secondary" rowspan="9">Backend Technologies</th>
+                    <th class="table-secondary" rowspan="9">Backend Technologies<br><span class="text-muted">バックエンド技術</span></th>
                     <th>C#</th>
                     <th class="align-middle"><%= answer28 %></th>
                 </tr>
@@ -194,11 +198,11 @@
                     <th class="align-middle"><%= answer36 %></th>
                 </tr>
                 <tr>
-                    <th class="table-active">If you need specific frameworks please specify here</th>
+                    <th class="table-active">If you need specific frameworks please specify here<br><span class="text-muted">もし特定のフレームワークが必要な時はこちらに記述してください。</span></th>
                     <th class="align-middle" colspan="2"><%= answer37 %></th>
                 </tr>
                 <tr>
-                    <th class="table-secondary" rowspan="8">Database Technologies</th>
+                    <th class="table-secondary" rowspan="8">Database Technologies<br><span class="text-muted">データベース技術</span></th>
                     <th>MS SQL server</th>
                     <th class="align-middle"><%= answer38 %></th>
                 </tr>
@@ -231,61 +235,70 @@
                     <th class="align-middle"><%= answer45 %></th>
                 </tr>
                 <tr>
-                    <th class="table-active"rowspan="2">OS requirements</th>
+                    <th class="table-active"rowspan="2">OS requirements<br><span class="text-muted">OSの要求</span></th>
                     <th class="align-middle" colspan="2"><%= answer46 %></th>
                 </tr>
                 <tr>
                     <th class="align-middle" colspan="2">other: <%= answer47 %></th>
                 </tr>
                 <tr>
-                    <th class="table-secondary">other requirements</th>
+                    <th class="table-secondary">other requirements<br><span class="text-muted">他の要求</span></th>
                     <th class="align-middle" colspan="2"><%= answer48 %></th>
                 </tr>
                 <tr>
-                    <th class="table-active">Github account name</th>
+                    <th class="table-active">Github account name<br><span class="text-muted">Githubのアカウント名</span></th>
                     <th class="align-middle" colspan="2"><%= answer49 %></th>
                 </tr>
                 <tr>
-                    <th class="table-secondary">Slack account required</th>
+                    <th class="table-secondary">Slack account required<br><span class="text-muted">Slackアカウントの要求</span></th>
                     <th class="align-middle" colspan="2"><%= answer50 %></th>
                 </tr>
                 <tr>
-                    <th class="table-secondary">Will you include the engineer in any project management tools to communicate with other members?</th>
+                    <th class="table-secondary">Will you include the engineer in any project management tools to communicate with other members?<br><span class="text-muted">他のメンバとコミュニケーションするためのあらゆるプロジェクト管理ツールを扱える技術者を加えたいですか？</span></th>
                     <th class="align-middle" colspan="2"><%= answer51 %></th>
                 </tr>
                 <tr>
-                    <th class="table-secondary">If yes to the previous question please provide the project management tool name here</th>
+                    <th class="table-secondary">If yes to the previous question please provide the project management tool name here<br><span class="text-muted">前の質問にYesと答えた方はプロジェクト管理ツールの名前をここに記述してください。</span></th>
                     <th class="align-middle" colspan="2"><%= answer52 %></th>
                 </tr>
                 <tr>
-                    <th class="table-active">Do you want to have a regular review on the development status?</th>
+                    <th class="table-active">Do you want to have a regular review on the development status?<br><span class="text-muted">開発ステータスの定期的な見直しをしたいですか？</span></th>
                     <th class="align-middle" colspan="2"><%= answer53 %></th>
                 </tr>
                 <tr>
-                    <th class="table-secondary">Application security compliance specifics</th>
+                    <th class="table-secondary">Application security compliance specifics<br><span class="text-muted">アプリケーションセキュリティコンプライアンスの詳細</span></th>
                     <th class="align-middle" colspan="2"><%= answer54 %></th>
                 </tr>
                 <tr>
-                    <th class="table-active">Any other specific risks / assumptions</th>
+                    <th class="table-active">Any other specific risks / assumptions<br><span class="text-muted">他の特定のリスクや想定</span></th>
                     <th class="align-middle" colspan="2"><%= answer55 %></th>
                 </tr>
                 <tr>
-                    <th class="table-secondary">Links to external documents to share</th>
+                    <th class="table-secondary">Links to external documents to share<br><span class="text-muted">共有する外部ドキュメントとのリンク</span></th>
                     <th class="align-middle" colspan="2"><%= answer56 %></th>
                 </tr>
                 <tr>
-                    <th class="table-active">Project incentives may be applied depending on performance result</th>
+                    <th class="table-active">Project incentives may be applied depending on performance result<br><span class="text-muted">プロジェクトのやる気はパフォーマンス結果によって影響されうる</span></th>
                     <th class="align-middle" colspan="2"><%= answer57 %></th>
                 </tr>
                 <tr>
-                    <th class="table-secondary">other comments</th>
+                    <th class="table-secondary">other comments<br><span class="text-muted">その他コメント</span></th>
                     <th class="align-middle" colspan="2"><%= answer58 %></th>
                 </tr>
             </tbody>
         </table>
-
-        <input type="button" onclick="window.history.back();" value="Go Back" class="btn">
-        <input type="button" value="Confirm" class="btn" id="ajax-button">
+        <div class="py-3 row">
+            <div class="col-md-3">
+                <input type="button" onclick="window.history.back();" value="Back" class="btn btn-block">
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-3">
+                <input type="button" value="Confirm" class="btn btn-primary btn-block" id="ajax-button">
+            </div>
+        </div>
     </div>
+    <footer class="my-5 pt-5 text-center text-small text-muted">
+			
+    </footer>
 </body>
 </html>
