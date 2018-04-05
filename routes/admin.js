@@ -34,6 +34,7 @@ router.get('/detail', (req, res) => {
     new Manpowerform().where('id', '=', req.query.id).fetch().then((collection) => {
         var col = collection.attributes;
         var data = {
+            answers : col,
             answer1 : col.first_name,
             answer2 : col.last_name,
             answer3 : col.email,

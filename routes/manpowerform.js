@@ -39,8 +39,6 @@ router.post('/confirm', (req, res) => {
         answer1 : answers.first_name,
         answer2 : answers.last_name,
         answer3 : answers.email,
-        answer4 : answers.fixer_project,
-        answer5 : answers.fixer_department,
         answer6 : answers.client_company,
         answer7 : answers.client_point,
         answer8 : answers.client_contact,

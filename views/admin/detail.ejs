@@ -72,23 +72,27 @@
                     <th class="align-middle" colspan="2"><%= answer11 %></th>
                 </tr>
                 <tr>
-                    <th class="table-secondary">Bilingual Resource needed?</th>
+                    <th class="table-secondary">How many people do you need?</th>
+                    <th class="align-middle" colspan="2"><%= answers.how_people %></th>
+                </tr>
+                <tr>
+                    <th class="table-active">Bilingual Resource needed?</th>
                     <th class="align-middle" colspan="2"><%= answer12 %></th>
                 </tr>
                 <tr>
-                    <th class="table-active">Project expected kick off</th>
+                    <th class="table-secondary">Project expected kick off</th>
                     <th class="align-middle" colspan="2"><%= answer13 %></th>
                 </tr>
                 <tr>
-                    <th class="table-secondary">Project expected deadline</th>
+                    <th class="table-active">Project expected deadline</th>
                     <th class="align-middle" colspan="2"><%= answer14 %></th>
                 </tr>
                 <tr>
-                    <th class="table-active">Flexible Deadline</th>
+                    <th class="table-secondary">Flexible Deadline</th>
                     <th class="align-middle" colspan="2"><%= answer15 %></th>
                 </tr>
                 <tr>
-                    <th class="w-25 table-secondary" rowspan="10">Frontend Technologies</th>
+                    <th class="w-25 table-active" rowspan="10">Frontend Technologies</th>
                     <th class="w-25">HTML</th>
                     <th class="align-middle w-50"><%= answer16 %></th>
                 </tr>
@@ -129,14 +133,14 @@
                     <th class="align-middle"><%= answer25 %></th>
                 </tr>
                 <tr>
-                    <th class="table-active" rowspan="2">Cloud Platform</th>
+                    <th class="table-secondary" rowspan="2">Cloud Platform</th>
                     <th class="align-middle" colspan="2"><%= answer26 %></th>
                 </tr>
                 <tr>
                     <th class="align-middle" colspan="2">other: <%= answer27 %></th>
                 </tr>
                 <tr>
-                    <th class="table-secondary" rowspan="9">Backend Technologies</th>
+                    <th class="table-active" rowspan="9">Backend Technologies</th>
                     <th>C#</th>
                     <th class="align-middle"><%= answer28 %></th>
                 </tr>
@@ -173,11 +177,11 @@
                     <th class="align-middle"><%= answer36 %></th>
                 </tr>
                 <tr>
-                    <th class="table-active">If you need specific frameworks please specify here</th>
+                    <th class="table-secondary">If you need specific frameworks please specify here</th>
                     <th class="align-middle" colspan="2"><%= answer37 %></th>
                 </tr>
                 <tr>
-                    <th class="table-secondary" rowspan="8">Database Technologies</th>
+                    <th class="table-active" rowspan="8">Database Technologies</th>
                     <th>MS SQL server</th>
                     <th class="align-middle"><%= answer38 %></th>
                 </tr>
@@ -210,22 +214,22 @@
                     <th class="align-middle"><%= answer45 %></th>
                 </tr>
                 <tr>
-                    <th class="table-active"rowspan="2">OS requirements</th>
+                    <th class="table-secondary"rowspan="2">OS requirements</th>
                     <th class="align-middle" colspan="2"><%= answer46 %></th>
                 </tr>
                 <tr>
                     <th class="align-middle" colspan="2">other: <%= answer47 %></th>
                 </tr>
                 <tr>
-                    <th class="table-secondary">other requirements</th>
+                    <th class="table-active">other requirements</th>
                     <th class="align-middle" colspan="2"><%= answer48 %></th>
                 </tr>
                 <tr>
-                    <th class="table-active">Github account name</th>
+                    <th class="table-secondary">Github account name</th>
                     <th class="align-middle" colspan="2"><%= answer49 %></th>
                 </tr>
                 <tr>
-                    <th class="table-secondary">Slack account required</th>
+                    <th class="table-active">Slack account required</th>
                     <th class="align-middle" colspan="2"><%= answer50 %></th>
                 </tr>
                 <tr>
@@ -233,38 +237,48 @@
                     <th class="align-middle" colspan="2"><%= answer51 %></th>
                 </tr>
                 <tr>
-                    <th class="table-secondary">If yes to the previous question please provide the project management tool name here</th>
+                    <th class="table-active">If yes to the previous question please provide the project management tool name here</th>
                     <th class="align-middle" colspan="2"><%= answer52 %></th>
                 </tr>
                 <tr>
-                    <th class="table-active">Do you want to have a regular review on the development status?</th>
+                    <th class="table-secondary">Do you want to have a regular review on the development status?</th>
                     <th class="align-middle" colspan="2"><%= answer53 %></th>
                 </tr>
                 <tr>
-                    <th class="table-secondary">Application security compliance specifics</th>
+                    <th class="table-active">Application security compliance specifics</th>
                     <th class="align-middle" colspan="2"><%= answer54 %></th>
                 </tr>
                 <tr>
-                    <th class="table-active">Any other specific risks / assumptions</th>
+                    <th class="table-secondary">Any other specific risks / assumptions</th>
                     <th class="align-middle" colspan="2"><%= answer55 %></th>
                 </tr>
                 <tr>
-                    <th class="table-secondary">Links to external documents to share</th>
+                    <th class="table-active">Links to external documents to share</th>
                     <th class="align-middle" colspan="2"><%= answer56 %></th>
                 </tr>
                 <tr>
-                    <th class="table-active">Project incentives may be applied depending on performance result</th>
+                    <th class="table-secondary">Project incentives may be applied depending on performance result</th>
                     <th class="align-middle" colspan="2"><%= answer57 %></th>
                 </tr>
                 <tr>
-                    <th class="table-secondary">other comments</th>
+                    <th class="table-active">other comments</th>
                     <th class="align-middle" colspan="2"><%= answer58 %></th>
                 </tr>
             </tbody>
         </table>
 
-        <input type="button" onclick="window.history.back();" value="Go Back" class="btn">
-        <input type="button" value="Print this page" class="btn" onclick="window.print();">
+        <div class="py-3 row">
+            <div class="col-md-3">
+                <input type="button" onclick="window.history.back();" value="Back" class="btn btn-block">
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-3">
+                <input type="button" value="Print this page" class="btn btn-primary btn-block" onclick="window.print()">
+            </div>
+        </div>
+        <footer class="my-5 pt-5 text-center text-small text-muted">
+			
+        </footer>
     </div>
 </body>
 </html>
