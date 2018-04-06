@@ -23,7 +23,6 @@
         <h2 class="text-center">Milestone Form</h2>
       </div>
       <form method="post" action="/milestoneform/confirm">
-        <input type="text" class="form-control" id="milestone" placeholder="" name="testName">
         <table class="table table-sm">
           <thead>
             <tr class="thead-dark">
@@ -42,7 +41,7 @@
                 </th>
                 <script> hantei = $('input[name="milestone[i]"]').val();</script>
                   <th class="w-auto" scope="col">
-                    <input type="number" list="data1" min="0" class="form-control" id="<%= i+100 %>" placeholder="" required name="eshours<% [i] %>">
+                    <input type="number" list="data1" min="0" class="form-control" id="<%= i+100 %>" placeholder="" name="eshours<% [i] %>">
                     <datalist id="data1">
                       <option value="1"></option>
                       <option value="2"></option>
@@ -57,11 +56,23 @@
                   </th>
               </tr>
             <% } %>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">
+                  <div class="col-md-5">
+                    <button class="btn mx-auto d-block btn-block" type="button" id="add_button">Add a row</button>
+                  </div>
+                  </th>
+                <th scope="col"></th>
+              </tr>
           </tbody>
         </table>
-        <button class="btn btn-primary btn-lg btn-block" type="submit">Send Form</button>
-      </form>
+          <button class="btn btn-primary btn-lg btn-block" type="submit">Send Form</button>
+        </form>
     </div>
+		<footer class="my-5 pt-5 text-center text-small text-muted">
+			
+		</footer>
   </body>
 </html>
 <script>

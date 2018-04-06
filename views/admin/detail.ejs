@@ -14,7 +14,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- import Bootstrap -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
+    <!-- import sheet.js to output xslx sheet -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.9.10/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js"></script>
 </head>
 
 <body class="bg-light">
@@ -24,10 +26,10 @@
                 <h1>Registered Data</h1>
             </div>
             <div class="col-md-4">
-                <img src="/images/hanko.png" class="img-fluid" max-width:25%;>
+                <img src="/images/hanko.png" class="img-fluid" max-width:40%;>
             </div>
         </div>
-        <table class="table table-sm">
+        <table class="table table-sm table-to-export">
             <thead>
                 <tr class="thead-dark">
                     <th class="w-25" scope="col">Question</th>
@@ -36,63 +38,63 @@
             </thead>
             <tbody>
                 <tr>
-                    <th class="w-25 table-active">Requester Name</th>
+                    <th class="w-25 table-active">Requester Name<br><span class="text-muted">依頼者</span></th>
                     <th class="w-75 align-mimddle" colspan="2"><%= answer1 %></th>
                 </tr>
                 <tr>
-                    <th class="table-secondary">Requester Department</th>
+                    <th class="table-secondary">Requester Department<br><span class="text-muted">依頼者の部署</span></th>
                     <th class="align-middle" colspan="2"><%= answer2 %></th>
                 </tr>
                 <tr>
-                    <th class="table-active">Email</th>
+                    <th class="table-active">Email<br><span class="text-muted">電子メール</span></th>
                     <th class="align-middle" colspan="2"><%= answer3 %></th>
                 </tr>
                 <tr>
-                    <th class="table-secondary">Client Company Name</th>
+                    <th class="table-secondary">Client Company Name<br><span class="text-muted">クライアント会社</span></th>
                     <th class="align-middle" colspan="2"><%= answer6 %></th>
                 </tr>
                 <tr>
-                    <th class="table-active">Client point of contact person name</th>
+                    <th class="table-active">Client point of contact person name<br><span class="text-muted">クライアント会社の担当者</span></th>
                     <th class="align-middle" colspan="2"><%= answer7 %></th>
                 </tr>
                 <tr>
-                    <th class="table-secondary">Client contact details (IM/phone)</th>
+                    <th class="table-secondary">Client contact details (IM/phone)<br><span class="text-muted">クライアントとの連絡手段</span></th>
                     <th class="align-middle" colspan="2"><%= answer8 %></th>
                 </tr>
                 <tr>
-                    <th class="table-active">Project Title</th>
+                    <th class="table-active">Project Title<br><span class="text-muted">プロジェクトタイトル</span></th>
                     <th class="align-middle" colspan="2"><%= answer9 %></th>
                 </tr>
                 <tr>
-                    <th class="table-secondary">Project Description</th>
+                    <th class="table-secondary">Project Description<br><span class="text-muted">プロジェクトの詳細</span></th>
                     <th class="align-middle" colspan="2"><%= answer10 %></th>
                 </tr>
                 <tr>
-                    <th class="table-active">Project Scope</th>
+                    <th class="table-active">Project Scope<br><span class="text-muted">プロジェクトの展望</span></th>
                     <th class="align-middle" colspan="2"><%= answer11 %></th>
                 </tr>
                 <tr>
-                    <th class="table-secondary">How many people do you need?</th>
+                    <th class="table-secondary">How many people do you need?<br><span class="text-muted">どれくらいの人材が必要ですか？</span></th>
                     <th class="align-middle" colspan="2"><%= answers.how_people %></th>
                 </tr>
                 <tr>
-                    <th class="table-active">Bilingual Resource needed?</th>
+                    <th class="table-active">Bilingual Resource needed?<br><span class="text-muted">バイリンガル人材は必要か?</span></th>
                     <th class="align-middle" colspan="2"><%= answer12 %></th>
                 </tr>
                 <tr>
-                    <th class="table-secondary">Project expected kick off</th>
+                    <th class="table-secondary">Project expected kick off<br><span class="text-muted">プロジェクトの開始予定日</span></th>
                     <th class="align-middle" colspan="2"><%= answer13 %></th>
                 </tr>
                 <tr>
-                    <th class="table-active">Project expected deadline</th>
+                    <th class="table-active">Project expected deadline<br><span class="text-muted">プロジェクトの終了予定日</span></th>
                     <th class="align-middle" colspan="2"><%= answer14 %></th>
                 </tr>
                 <tr>
-                    <th class="table-secondary">Flexible Deadline</th>
+                    <th class="table-secondary">Flexible Deadline<br><span class="text-muted">締め切りは変更可能か</span></th>
                     <th class="align-middle" colspan="2"><%= answer15 %></th>
                 </tr>
                 <tr>
-                    <th class="w-25 table-active" rowspan="10">Frontend Technologies</th>
+                    <th class="w-25 table-active" rowspan="10">Frontend Technologies<br><span class="text-muted">フロントエンド技術</span></th>
                     <th class="w-25">HTML</th>
                     <th class="align-middle w-50"><%= answer16 %></th>
                 </tr>
@@ -133,14 +135,14 @@
                     <th class="align-middle"><%= answer25 %></th>
                 </tr>
                 <tr>
-                    <th class="table-secondary" rowspan="2">Cloud Platform</th>
+                    <th class="table-secondary" rowspan="2">Cloud Platform<br><span class="text-muted">クラウドプラットフォーム</span></th>
                     <th class="align-middle" colspan="2"><%= answer26 %></th>
                 </tr>
                 <tr>
                     <th class="align-middle" colspan="2">other: <%= answer27 %></th>
                 </tr>
                 <tr>
-                    <th class="table-active" rowspan="9">Backend Technologies</th>
+                    <th class="table-active" rowspan="9">Backend Technologies<br><span class="text-muted">バックエンド技術</span></th>
                     <th>C#</th>
                     <th class="align-middle"><%= answer28 %></th>
                 </tr>
@@ -177,11 +179,11 @@
                     <th class="align-middle"><%= answer36 %></th>
                 </tr>
                 <tr>
-                    <th class="table-secondary">If you need specific frameworks please specify here</th>
+                    <th class="table-secondary">If you need specific frameworks please specify here<br><span class="text-muted">もし特定のフレームワークが必要な時はこちらに記述してください。</span></th>
                     <th class="align-middle" colspan="2"><%= answer37 %></th>
                 </tr>
                 <tr>
-                    <th class="table-active" rowspan="8">Database Technologies</th>
+                    <th class="table-active" rowspan="8">Database Technologies<br><span class="text-muted">データベース技術</span></th>
                     <th>MS SQL server</th>
                     <th class="align-middle"><%= answer38 %></th>
                 </tr>
@@ -214,54 +216,54 @@
                     <th class="align-middle"><%= answer45 %></th>
                 </tr>
                 <tr>
-                    <th class="table-secondary"rowspan="2">OS requirements</th>
+                    <th class="table-secondary"rowspan="2">OS requirements<br><span class="text-muted">OSの要求</span></th>
                     <th class="align-middle" colspan="2"><%= answer46 %></th>
                 </tr>
                 <tr>
                     <th class="align-middle" colspan="2">other: <%= answer47 %></th>
                 </tr>
                 <tr>
-                    <th class="table-active">other requirements</th>
+                    <th class="table-active">other requirements<br><span class="text-muted">他の要求</span></th>
                     <th class="align-middle" colspan="2"><%= answer48 %></th>
                 </tr>
                 <tr>
-                    <th class="table-secondary">Github account name</th>
+                    <th class="table-secondary">Github account name<br><span class="text-muted">Githubのアカウント名</span></th>
                     <th class="align-middle" colspan="2"><%= answer49 %></th>
                 </tr>
                 <tr>
-                    <th class="table-active">Slack account required</th>
+                    <th class="table-active">Slack account required<br><span class="text-muted">Slackアカウントの要求</span></th>
                     <th class="align-middle" colspan="2"><%= answer50 %></th>
                 </tr>
                 <tr>
-                    <th class="table-secondary">Will you include the engineer in any project management tools to communicate with other members?</th>
+                    <th class="table-secondary">Will you include the engineer in any project management tools to communicate with other members?<br><span class="text-muted">他のメンバとのコミュニケーションするためのあらゆるプロジェクト管理ツールを扱える技術者を加えたいですか？</span></th>
                     <th class="align-middle" colspan="2"><%= answer51 %></th>
                 </tr>
                 <tr>
-                    <th class="table-active">If yes to the previous question please provide the project management tool name here</th>
+                    <th class="table-active">If yes to the previous question please provide the project management tool name here<br><span class="text-muted">前の質問にYesと答えた方はプロジェクト管理ツールの名前をここに記述してください。</span></th>
                     <th class="align-middle" colspan="2"><%= answer52 %></th>
                 </tr>
                 <tr>
-                    <th class="table-secondary">Do you want to have a regular review on the development status?</th>
+                    <th class="table-secondary">Do you want to have a regular review on the development status?<br><span class="text-muted">開発ステータスの定期的な見直しをしたいですか？</span></th>
                     <th class="align-middle" colspan="2"><%= answer53 %></th>
                 </tr>
                 <tr>
-                    <th class="table-active">Application security compliance specifics</th>
+                    <th class="table-active">Application security compliance specifics<br><span class="text-muted">アプリケーションセキュリティコンプライアンスの詳細</span></th>
                     <th class="align-middle" colspan="2"><%= answer54 %></th>
                 </tr>
                 <tr>
-                    <th class="table-secondary">Any other specific risks / assumptions</th>
+                    <th class="table-secondary">Any other specific risks / assumptions<br><span class="text-muted">他の特定のリスクや想定</span></th>
                     <th class="align-middle" colspan="2"><%= answer55 %></th>
                 </tr>
                 <tr>
-                    <th class="table-active">Links to external documents to share</th>
+                    <th class="table-active">Links to external documents to share<br><span class="text-muted">共有する外部ドキュメントとのリンク</span></th>
                     <th class="align-middle" colspan="2"><%= answer56 %></th>
                 </tr>
                 <tr>
-                    <th class="table-secondary">Project incentives may be applied depending on performance result</th>
+                    <th class="table-secondary">Project incentives may be applied depending on performance result<br><span class="text-muted">プロジェクトへのやる気はパフォーマンス結果によって影響されうる</span></th>
                     <th class="align-middle" colspan="2"><%= answer57 %></th>
                 </tr>
                 <tr>
-                    <th class="table-active">other comments</th>
+                    <th class="table-active">other comments<br><span class="text-muted">その他コメント</span></th>
                     <th class="align-middle" colspan="2"><%= answer58 %></th>
                 </tr>
             </tbody>
@@ -275,6 +277,10 @@
             <div class="col-md-3">
                 <input type="button" value="Print this page" class="btn btn-primary btn-block" onclick="window.print()">
             </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-3">
+                <input type="button" value="Download XLSX" class="btn btn-block" onclick="make_xlsx()">
+            </div>
         </div>
         <footer class="my-5 pt-5 text-center text-small text-muted">
 			
@@ -282,4 +288,30 @@
     </div>
 </body>
 </html>
+<script type="text/javascript">
+function make_xlsx() {
+    var wopts = {
+        bookType: 'xlsx',
+        bookSST: true,
+        type: 'binary'
+    };
+    var workbook = {SheetNames:[], Sheets:{}};
+    document.querySelectorAll('table.table-to-export').forEach(function (currentValue, index) {
+        var n = "testsheet";
+        workbook.SheetNames.push(n);
+        workbook.Sheets[n] = XLSX.utils.table_to_sheet(currentValue, wopts);
+    });
+    var wbout = XLSX.write(workbook, wopts);
+    function s2ab(s) {
+        var buf = new ArrayBuffer(s.length);
+        var view = new Uint8Array(buf);
+        for (var i = 0; i != s.length; ++i){
+            view[i] = s.charCodeAt(i) & 0xFF;
+        }
+        return buf;
+    }
+
+    saveAs(new Blob([s2ab(wbout)], {type: 'application/actet-stream'}), 'test.xlsx');
+}
+</script>
 
