@@ -40,7 +40,6 @@
             });
         });
     </script>
-
 </head>
 
 <body class="bg-light">
@@ -51,7 +50,7 @@
         <div class="py-3 col-md-3">
             <input type="button" onclick="window.history.back();" value="Back" class="btn btn-block">
         </div>
-        
+
         <table class="table table-sm">
             <thead>
                 <tr class="thead-dark">
@@ -62,7 +61,10 @@
             </thead>
             <tbody>
                 <% var sum = 0; %>
-                <% for(var i=0; i<10; i++) { %>
+                <% console.log(JSON.stringify(answers)); %>
+                <% answ_length = answers.eshours.length; %>
+                <% console.log("length = "+ answ_length); %>
+                <% for(var i=0; i < answ_length; i++) { %>
                 <tr>
                     <% if(answers.eshours[i] == ""){ %>
 
@@ -72,7 +74,7 @@
                         <th class="align-middle text-center"><%= answers.eshours[i] %></th>
                     <% } %>
                 </tr>
-                <% sum = sum + Number(answers.eshours[i]); %>
+                    <% sum = sum + Number(answers.eshours[i]); %>
                 <% } %>
                 <tr class="table-info">
                     <th></th>

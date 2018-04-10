@@ -23,7 +23,7 @@
         <h2 class="text-center">Milestone Form</h2>
       </div>
       <form method="post" action="/milestoneform/confirm">
-        <table class="table table-sm">
+        <table id="milestonetable" class="table table-sm">
           <thead>
             <tr class="thead-dark">
               <th class="text-center w-auto" scope="col">SI.No</th>
@@ -32,35 +32,23 @@
             </tr>
           </thead>
           <tbody>
-            <% var hantei; %>
-            <% for(var i=0; i<10; i++) { %>
+            <% var i; %>
+            <% for(i=0; i<10; i++) { %>
               <tr>
                 <th class="w-auto text-center" scope="col"><%= i+1 %></th>
                 <th class="w-75" scope="col">
                   <input type="text" class="form-control" id="<%= i %>" placeholder="" name="milestone<% [i] %>" onchange='reqChange(<%= i %>)'>
                 </th>
-                <script> hantei = $('input[name="milestone[i]"]').val();</script>
-                  <th class="w-auto" scope="col">
-                    <input type="number" list="data1" min="0" class="form-control" id="<%= i+100 %>" placeholder="" name="eshours<% [i] %>">
-                    <datalist id="data1">
-                      <option value="1"></option>
-                      <option value="2"></option>
-                      <option value="3"></option>
-                      <option value="4"></option>
-                      <option value="5"></option>
-                      <option value="6"></option>
-                      <option value="7"></option>
-                      <option value="8"></option>
-                      <option value="9"></option>
-                    </datalist>
-                  </th>
+                <th class="w-auto" scope="col">
+                  <input type="number" list="data1" min="0" class="form-control" id="<%= i+100 %>" placeholder="" name="eshours<% [i] %>">
+                </th>
               </tr>
             <% } %>
               <tr>
                 <th scope="col"></th>
                 <th scope="col">
                   <div class="col-md-5">
-                    <button class="btn mx-auto d-block btn-block" type="button" id="add_button">Add a row</button>
+                    <button class="btn mx-auto d-block btn-block" type="button" id="add_row">Add a row</button>
                   </div>
                   </th>
                 <th scope="col"></th>
@@ -74,26 +62,89 @@
 			
 		</footer>
   </body>
+  <datalist id="data1">
+    <option value="1"></option>
+    <option value="2"></option>
+    <option value="3"></option>
+    <option value="4"></option>
+    <option value="5"></option>
+    <option value="6"></option>
+    <option value="7"></option>
+    <option value="8"></option>
+    <option value="9"></option>
+  </datalist>
 </html>
 <script>
-  function reqChange(i){
+  function reqChange(row_num){
+    // alert("row_num" + row_num);
     var eval;
-    var n=i+100;
+    var n=row_num+100;
+    var tablelen = $("#milestonetable tbody").children().length;
+    //console.log("length = "+tablelen);
     // evalq = $('input[ name="testName" ]').val();
     // evald = $('#'+i).val();
     // evaln = $('#'+n).val();
     // alert("reqChange start" + i + " evalq=" + evalq + " evald=" + evald + evaln);
-    for(k=0; k<10; k++){
-      eshoursId=k+100;
-      eval = $('#'+k).val();
-      if(eval == ""){
-        $('#'+eshoursId).attr('required',false);
-        // $('#'+eshoursId).attr('placeholder',"null");
-      }else{
-        $('#'+eshoursId).attr('required',true);
-        // $('#'+eshoursId).attr('placeholder',eval);
+    for(k=0; k<tablelen; k++){
+      if(k != 10){
+        var eshoursId=k+100;
+        eval = $('#'+k).val();
+        if(eval == ""){
+          $('#'+eshoursId).attr('required',false);
+          $('#'+eshoursId).attr('placeholder',"null");
+        }else{
+          $('#'+eshoursId).attr('required',true);
+          $('#'+eshoursId).attr('placeholder',eval);
+        }
       }
     }
   }
+
+  function addRow(addrow_num){
+    // get table element
+    var table = document.getElementById("milestonetable");
+    addrow_num = 8;
+    // add row to the end of the table
+    var tr = table.insertRow(addrow_num);
+    var td1 = tr.insertCell(addrow_num),
+        td2 = tr.insertCell(addrow_num),
+        td3 = tr.insertCell(addrow_num);
+    
+    // element which is inserted to the table
+    var si_no = addrow_num;
+    //var milestone_tag = '<input type="text" class="form-control" placeholder="" name="milestone'+[addrow_num]+'" onchange='reqChange('+addrow_num+')'>';
+    
+    // insert element to table cells
+    td1.innerHTML = 'test';
+    td2.innerHTML = 'test'; //milestone_tag;
+    td3.innerHTML = 'test';
+  }
+
+$(document).ready(function(){
+  $("#add_row").click(function(){
+    // add row to the end of the table
+    $('#milestonetable').append( getRowData() );
+    
+    // if you want insert the data after specified row, use this code
+    // var len = $("#tbl tbody").children().length;
+    // $('#milestonetable tr').eq(len - 2).after( getRowData() );
+  });
+});
+
+getRowData = function() {
+  var num = $("#milestonetable tbody").children().length;
+  var eshoursId = num + 100;
+  var tform = '<tr>' +
+                '<th class="text-center">'+num+'</th>' +
+                '<th class="text-center">' +
+                  '<input type="text" class="form-control" id="'+num+'" placeholder="" name="milestone" onchange="reqChange('+num+')">' +
+                '</th>' +
+                '<th class="w-auto" scope="col">' +
+                  '<input type="number" list="data1" min="0" class="form-control" id="'+eshoursId+'" placeholder="" name="eshours"' +
+                '</th>' +
+              '</tr>';
+  var eval = $('#'+111).val();
+  return tform;
+}
 </script>
 
