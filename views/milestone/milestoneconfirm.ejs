@@ -61,15 +61,15 @@
             </thead>
             <tbody>
                 <% var sum = 0; %>
-                <% console.log(JSON.stringify(answers)); %>
+                <!-- console.log(JSON.stringify(answers)); -->
                 <% answ_length = answers.eshours.length; %>
-                <% console.log("length = "+ answ_length); %>
+                <!-- console.log("length = "+ answ_length); -->
                 <% for(var i=0; i < answ_length; i++) { %>
                 <tr>
                     <% if(answers.eshours[i] == ""){ %>
 
                     <% } else { %>
-                        <th class="table-active align-middle text-center"><%= i %></th>
+                        <th class="table-active align-middle text-center"><%= i+1 %></th>
                         <th class="align-middle text-center"><%= answers.milestone[i] %></th>
                         <th class="align-middle text-center"><%= answers.eshours[i] %></th>
                     <% } %>

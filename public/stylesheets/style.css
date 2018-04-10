@@ -7,19 +7,12 @@ a {
   color: #00B7FF;
 }
 
-table{
-  margin: 20px;
+.addButton {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
 }
 
-table tr th {
-  background-color: #999;
-  color: #fff;
-  text-align: center;
-  padding: 3px 10px;
-}
-table tr td {
-  background-color: #eee;
-  color: #666;
-  text-align: left;
-  padding: 3px 10px;
+.addButton:hover{
+  opacity: 0.65;
 }
