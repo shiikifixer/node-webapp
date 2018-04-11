@@ -14,9 +14,9 @@
     <!-- import jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- import Bootstrap -->
-	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-	  <!-- import jquery validater -->
-	  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- import jquery validater -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
   </head>
   <body class="bg-light">
     <div class="container">
@@ -38,10 +38,10 @@
               <tr>
                 <th class="w-auto text-center" scope="col"><%= i+1 %></th>
                 <th class="w-75" scope="col">
-                  <input type="text" class="form-control" id="<%= i %>" placeholder="" name="milestone<% [i] %>" onchange='reqChange(<%= i %>)'>
+                  <input type="text" class="form-control" id="<%= i %>" placeholder="" name="milestone<% [i] %>" onchange='reqChange()'>
                 </th>
                 <th class="w-auto" scope="col">
-                  <input type="number" list="data1" min="0" class="form-control" id="<%= i+100 %>" placeholder="" name="eshours<% [i] %>">
+                  <input type="number" list="data1" min="0" class="form-control" id="<%= i+100 %>" placeholder="" name="eshours<% [i] %>" onchange='reqChange()'>
                 </th>
               </tr>
             <% } %>
@@ -50,7 +50,7 @@
           <button class="btn btn-primary btn-lg btn-block" type="submit">Send Form</button>
         </form>
     </div>
-		<footer class="my-5 pt-5 text-center text-small text-muted">
+    <footer class="my-5 pt-5 text-center text-small text-muted">
     </footer>
     
     <div class="addButton">
@@ -70,27 +70,35 @@
   </datalist>
 </html>
 <script>
-  function reqChange(row_num){
+  function reqChange(){
     // alert("row_num" + row_num);
-    var eval;
-    var n=row_num+100;
+    var eval_ms;
+    var eval_eh;
     var tablelen = $("#milestonetable tbody").children().length;
+    var esId;
+    var msId;
     //console.log("length = "+tablelen);
     // evalq = $('input[ name="testName" ]').val();
     // evald = $('#'+i).val();
     // evaln = $('#'+n).val();
     // alert("reqChange start" + i + " evalq=" + evalq + " evald=" + evald + evaln);
-    for(k=0; k<tablelen+1; k++){
-      if(k != 10){
-        var eshoursId=k+100;
-        eval = $('#'+k).val();
-        if(eval == ""){
-          $('#'+eshoursId).attr('required',false);
-          // $('#'+eshoursId).attr('placeholder',"null");
-        }else{
-          $('#'+eshoursId).attr('required',true);
-          // $('#'+eshoursId).attr('placeholder',eval);
-        }
+    for(msId=0; msId<tablelen+1; msId++){
+      esId=msId+100;
+      eval_ms = $('#'+msId).val();
+      if(eval_ms == ""){
+        $('#'+esId).attr('required',false);
+        // $('#'+eshoursId).attr('placeholder',"null");
+      }else{
+        $('#'+esId).attr('required',true);
+        // $('#'+eshoursId).attr('placeholder',eval);
+      }
+      eval_eh = $('#'+esId).val();
+      if(eval_eh == ""){
+        $('#'+msId).attr('required',false);
+        // $('#'+eshoursId).attr('placeholder',"null");
+      }else{
+        $('#'+msId).attr('required',true);
+        // $('#'+eshoursId).attr('placeholder',eval);
       }
     }
   }
@@ -112,10 +120,10 @@ getRowData = function() {
   var tform = '<tr>' +
                 '<th class="text-center">'+num+'</th>' +
                 '<th class="text-center">' +
-                  '<input type="text" class="form-control" id="'+num+'" placeholder="" name="milestone" onchange="reqChange('+num+')">' +
+                  '<input type="text" class="form-control" id="'+num+'" placeholder="" name="milestone" onchange="reqChange()">' +
                 '</th>' +
                 '<th class="w-auto" scope="col">' +
-                  '<input type="number" list="data1" min="0" class="form-control" id="'+eshoursId+'" placeholder="" name="eshours"' +
+                  '<input type="number" list="data1" min="0" class="form-control" id="'+eshoursId+'" placeholder="" name="eshours" onchange="reqChange()">' +
                 '</th>' +
               '</tr>';
   var eval = $('#'+111).val();

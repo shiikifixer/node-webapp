@@ -20,8 +20,8 @@
             $('#ajax-button').click(
             function() {
                 var ans = <%- JSON.stringify(answers) %>;
-                var insertUrl= '../milestoneform/insert';
-                var completeUrl='../milestoneform/complete';
+                var insertUrl= '/milestoneform/insert';
+                var completeUrl='/milestoneform/complete';
                 $.ajax({
                     url: insertUrl,
                     type:'POST',
@@ -61,6 +61,7 @@
             </thead>
             <tbody>
                 <% var sum = 0; %>
+                <% var data_num = 0; %>
                 <!-- console.log(JSON.stringify(answers)); -->
                 <% answ_length = answers.eshours.length; %>
                 <!-- console.log("length = "+ answ_length); -->
@@ -69,7 +70,8 @@
                     <% if(answers.eshours[i] == ""){ %>
 
                     <% } else { %>
-                        <th class="table-active align-middle text-center"><%= i+1 %></th>
+                        <% data_num = data_num + 1; %>
+                        <th class="table-active align-middle text-center"><%= data_num %></th>
                         <th class="align-middle text-center"><%= answers.milestone[i] %></th>
                         <th class="align-middle text-center"><%= answers.eshours[i] %></th>
                     <% } %>

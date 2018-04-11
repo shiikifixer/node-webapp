@@ -12,24 +12,34 @@ var knex = require('knex')({
 });
 
 var bookshelf = require('bookshelf')(knex);
+var Manpowerform = bookshelf.Model.extend({
+    tableName: 'manpowerform2',
+    summary: function() {
+      return this.hasOne(Milestoneform);
+    }
+});
 var Milestoneform = bookshelf.Model.extend({
-    tableName: 'milestoneform'
+    tableName: 'milestoneform',
+    book: function() {
+        return this.belongTo(Manpowerform)
+    }
 });
 
 router.get('/', (req, res, next) => {
     res.render('milestone/milestoneform');
 });
 
-
 router.post('/confirm', (req, res, next) => {
     var answers = req.body;
-    console.log(JSON.stringify(answers));
+    // console.log(JSON.stringify(answers));
     var i = 0;
     res.render('milestone/milestoneconfirm.ejs', {
         answers : answers,
-        answer1 : answers.milestone[i],
-        answer2 : answers.eshours[i],
     });
 });
+
+router.post('/insert', (req, res) => {
+    new Milestoneform(req.body)
+})
 
 module.exports = router;
