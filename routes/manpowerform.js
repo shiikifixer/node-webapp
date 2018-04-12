@@ -1,5 +1,7 @@
 var express = require('express');
+require('date-utils');
 var router = express.Router();
+
 var knex = require('knex')({
     client: 'mysql',
     connection: {
@@ -33,8 +35,17 @@ router.get('/', (req, res) => {
 });
 
 router.post('/insert', (req, res) => {
-    new Manpowerform(req.body).save().then((model) => {
-        res.json(model);
+    var dt = new Date();
+    var date_formatted = dt.toFormat("YYYY-MM-DD HH24:MI:SS");
+    var insert_data = req.body;
+    insert_data.registration_date = date_formatted;
+
+    new Manpowerform(insert_data).save().then((model) => {
+        new Manpowerform().where({email:insert_data.email, registration_date: date_formatted}).fetch().then((collection) => {
+            req.session.user_id = collection.id;
+            console.log("session id = " + collection.id);
+            res.json(model);
+        });
     });
 });
 
