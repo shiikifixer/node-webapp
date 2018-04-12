@@ -29,17 +29,43 @@ router.get('/', (req, res, next) => {
     res.render('milestone/milestoneform');
 });
 
-router.post('/confirm', (req, res, next) => {
+router.post('/confirm', (req, res) => {
     var answers = req.body;
     // console.log(JSON.stringify(answers));
-    var i = 0;
     res.render('milestone/milestoneconfirm.ejs', {
         answers : answers,
     });
 });
 
 router.post('/insert', (req, res) => {
-    new Milestoneform(req.body)
+    var insdata = req.body;
+
+    //var jsonObject = JSON.parse(req.body);
+    //jsonObject.estimated_hou
+    // var loop_num = insdata.estimated_hours.length;
+    var data;
+    var eshours = insdata["estimated_hours[]"];  
+    var miles = insdata["milestone[]"];
+    console.log(eshours);
+    console.log(miles);
+    for(var i in eshours){
+        if(eshours[i] == ''){
+        }else{
+            console.log(`estimated_hours=${eshours[i]}`);
+            data = {
+                mrf_id: 2,
+                milestones: miles[i],
+                estimated_hours: eshours[i],
+            }
+            new Milestoneform(data).save().then((model) => {
+            });
+        }
+    }
+    res.json(insdata);
+});
+
+router.get('/complete', (req, res) => {
+    res.render('complete.ejs');
 })
 
 module.exports = router;

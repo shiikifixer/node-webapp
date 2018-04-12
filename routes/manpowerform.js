@@ -16,6 +16,17 @@ var Manpowerform = bookshelf.Model.extend({
     tableName: 'manpowerform2'
 });
 
+var mailer = require('nodemailer');
+// setting SMTP service
+var setting = {
+    service: 'Gmail',
+    auth: {
+        user: '',
+        pass: '',
+        port:''
+    }
+};
+
 /* GET home page */
 router.get('/', (req, res) => {
     res.render('manpowerform.ejs');

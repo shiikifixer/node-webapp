@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -12,6 +13,13 @@ var milestoneform = require('./routes/milestoneform');
 var admin = require('./routes/admin');
 
 var app = express();
+
+var session_opt = {
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: false,
+  cookie: { maxAge: 60 * 60 * 1000}
+};
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

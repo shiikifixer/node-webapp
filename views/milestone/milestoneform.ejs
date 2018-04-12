@@ -38,10 +38,10 @@
               <tr>
                 <th class="w-auto text-center" scope="col"><%= i+1 %></th>
                 <th class="w-75" scope="col">
-                  <input type="text" class="form-control" id="<%= i %>" placeholder="" name="milestone<% [i] %>" onchange='reqChange()'>
+                  <input type="text" class="form-control" id="<%= i %>" placeholder="" name="milestone" onchange='reqChange()'>
                 </th>
                 <th class="w-auto" scope="col">
-                  <input type="number" list="data1" min="0" class="form-control" id="<%= i+100 %>" placeholder="" name="eshours<% [i] %>" onchange='reqChange()'>
+                  <input type="number" list="data1" min="0" class="form-control" id="<%= i+100 %>" placeholder="" name="estimated_hours" onchange='reqChange()'>
                 </th>
               </tr>
             <% } %>
@@ -123,7 +123,7 @@ getRowData = function() {
                   '<input type="text" class="form-control" id="'+num+'" placeholder="" name="milestone" onchange="reqChange()">' +
                 '</th>' +
                 '<th class="w-auto" scope="col">' +
-                  '<input type="number" list="data1" min="0" class="form-control" id="'+eshoursId+'" placeholder="" name="eshours" onchange="reqChange()">' +
+                  '<input type="number" list="data1" min="0" class="form-control" id="'+eshoursId+'" placeholder="" name="estimated_hours" onchange="reqChange()">' +
                 '</th>' +
               '</tr>';
   var eval = $('#'+111).val();

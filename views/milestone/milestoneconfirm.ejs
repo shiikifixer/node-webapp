@@ -20,8 +20,9 @@
             $('#ajax-button').click(
             function() {
                 var ans = <%- JSON.stringify(answers) %>;
-                var insertUrl= '/milestoneform/insert';
-                var completeUrl='/milestoneform/complete';
+
+                var insertUrl= '../milestoneform/insert';
+                var completeUrl='../milestoneform/complete';
                 $.ajax({
                     url: insertUrl,
                     type:'POST',
@@ -63,20 +64,20 @@
                 <% var sum = 0; %>
                 <% var data_num = 0; %>
                 <!-- console.log(JSON.stringify(answers)); -->
-                <% answ_length = answers.eshours.length; %>
+                <% answ_length = answers.estimated_hours.length; %>
                 <!-- console.log("length = "+ answ_length); -->
                 <% for(var i=0; i < answ_length; i++) { %>
                 <tr>
-                    <% if(answers.eshours[i] == ""){ %>
+                    <% if(answers.estimated_hours[i] == ""){ %>
 
                     <% } else { %>
                         <% data_num = data_num + 1; %>
                         <th class="table-active align-middle text-center"><%= data_num %></th>
                         <th class="align-middle text-center"><%= answers.milestone[i] %></th>
-                        <th class="align-middle text-center"><%= answers.eshours[i] %></th>
+                        <th class="align-middle text-center"><%= answers.estimated_hours[i] %></th>
                     <% } %>
                 </tr>
-                    <% sum = sum + Number(answers.eshours[i]); %>
+                    <% sum = sum + Number(answers.estimated_hours[i]); %>
                 <% } %>
                 <tr class="table-info">
                     <th></th>
